@@ -6,6 +6,7 @@ use App\Http\Controllers\DocTypesController;
 use App\Http\Controllers\CalendarsController;
 use App\Http\Controllers\TypeUsersController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AppUsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,9 @@ Route::get('/api/product/getData', [ProductsController::class, 'getData']);
 Route::post('/api/product/store', [ProductsController::class, 'store']);
 Route::put('/api/product/update', [ProductsController::class, 'update']);
 Route::delete('/api/product/delete', [ProductsController::class, 'destroy']);
+
+Route::get('/api/user/index', [AppUsersController::class, 'index']);
+Route::get('/api/user/getData', [AppUsersController::class, 'getData']);
+Route::post('/api/user/store', [AppUsersController::class, 'store']);
+Route::put('/api/user/update', [AppUsersController::class, 'update']);
+Route::delete('/api/user/delete', [AppUsersController::class, 'destroy']);
