@@ -7,6 +7,8 @@ use App\Http\Controllers\CalendarsController;
 use App\Http\Controllers\TypeUsersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AppUsersController;
+use App\Http\Controllers\OrdersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +60,5 @@ Route::get('/api/user/getData', [AppUsersController::class, 'getData']);
 Route::post('/api/user/store', [AppUsersController::class, 'store']);
 Route::put('/api/user/update', [AppUsersController::class, 'update']);
 Route::delete('/api/user/delete', [AppUsersController::class, 'destroy']);
+
+Route::post('/api/orders/store', [OrdersController::class, 'store']);
