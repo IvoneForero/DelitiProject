@@ -8,6 +8,7 @@ use App\Http\Controllers\TypeUsersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AppUsersController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\DeliveriesController;
 
 
 /*
@@ -61,4 +62,14 @@ Route::post('/api/user/store', [AppUsersController::class, 'store']);
 Route::put('/api/user/update', [AppUsersController::class, 'update']);
 Route::delete('/api/user/delete', [AppUsersController::class, 'destroy']);
 
-Route::post('/api/orders/store', [OrdersController::class, 'store']);
+Route::get('/api/order/index', [OrdersController::class, 'index']);
+Route::get('/api/order/getData', [OrdersController::class, 'getData']);
+Route::post('/api/order/store', [OrdersController::class, 'store']);
+Route::put('/api/order/update', [OrdersController::class, 'update']);
+Route::delete('/api/order/delete', [OrdersController::class, 'destroy']);
+
+Route::get('/api/deliverie/index', [DeliveriesController::class, 'index']);
+Route::get('/api/deliverie/getData', [DeliveriesController::class, 'getData']);
+Route::post('/api/deliverie/store', [DeliveriesController::class, 'store']);
+Route::put('/api/deliverie/update', [DeliveriesController::class, 'update']);
+Route::delete('/api/deliverie/delete', [DeliveriesController::class, 'destroy']);
