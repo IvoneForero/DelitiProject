@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\orders;
 use App\Models\ord_details;
 use App\Models\deliveries;
-
+use Carbon\Carbon;
 
 class OrdersController extends Controller
 {
@@ -36,9 +36,10 @@ class OrdersController extends Controller
         try 
         {
             DB::beginTransaction();
+            $date=Carbon::now()->format('Y-m-d');
             $reg = new orders;
 
-            $reg->order_date = date('Y-m-d' , strtotime($request->ordDate));
+            $reg->order_date = $date;
             $reg->id_client = $request->idClient;
             $reg->deliv_adrress = $request->delivAdrress;
             $reg->delivery_date = date('Y-m-d' , strtotime($request->deliveryDate));
@@ -60,8 +61,8 @@ class OrdersController extends Controller
                 $detDetails->product_code=$detail['prod'];
                 $detDetails->units=$detail['units'];
                 $detDetails->unit_price=$detail['unitPrice'];
-                #$detDetails->total=int($detail['units'])*int($detail['units']);
-                $detDetails->total=500;
+                $detDetails->total=$detail['units']*$detail['unitPrice'];
+                #$detDetails->total=500;
 
                 $detDetails->save();
             }
