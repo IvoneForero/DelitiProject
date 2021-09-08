@@ -62,8 +62,6 @@ class OrdersController extends Controller
                 $detDetails->units=$detail['units'];
                 $detDetails->unit_price=$detail['unitPrice'];
                 $detDetails->total=$detail['units']*$detail['unitPrice'];
-                #$detDetails->total=500;
-
                 $detDetails->save();
             }
 
