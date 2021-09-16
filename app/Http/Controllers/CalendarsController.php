@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\calendars;
+use Inertia\Inertia;
 
 class CalendarsController extends Controller
 {
@@ -11,8 +12,9 @@ class CalendarsController extends Controller
     public function index(Request $request)
     {
         $calendar = calendars::get();
+        return Inertia::render('Agenda',['calendar'=>$calendar]);
 
-        return ['calendar'=>$calendar];
+        //return ['calendar'=>$calendar];
     }
 
     public function getData(Request $request)
