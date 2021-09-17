@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\products;
+use Inertia\Inertia;
 
 class ProductsController extends Controller
 {
@@ -11,8 +12,7 @@ class ProductsController extends Controller
     public function index(Request $request)
     {
         $reg = products::get();
-
-        return ['name'=>$reg];
+        return Inertia::render('Producto',['consulta'=>$reg]);
     }
     
     public function getData(Request $request)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\category_prods;
+use Inertia\Inertia;
 
 class CategoryProdsController extends Controller
 {
@@ -11,8 +12,7 @@ class CategoryProdsController extends Controller
     public function index(Request $request)
     {
         $catprod = category_prods::get();
-
-        return ['catprod'=>$catprod];
+        return Inertia::render('Categoria',['categoria'=>$catprod]);
     }
     
     public function getData(Request $request)

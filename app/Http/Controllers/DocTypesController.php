@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\doc_types;
+use Inertia\Inertia;
 
 class DocTypesController extends Controller
 {
@@ -11,8 +12,7 @@ class DocTypesController extends Controller
     public function index(Request $request)
     {
         $reg = doc_types::get();
-
-        return ['doc_type'=>$reg];
+        return Inertia::render('TipoDoc',['consulta'=>$reg]);
     }
     
     public function getData(Request $request)

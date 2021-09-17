@@ -25,6 +25,18 @@
                                 <jet-nav-link :href="route('agenda')" :active="route().current('agenda')">
                                     Agenda
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('categoria')" :active="route().current('categoria')">
+                                    Categoria
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('producto')" :active="route().current('producto')">
+                                    Producto
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('tipodoc')" :active="route().current('tipodoc')">
+                                    Tipo Documentos
+                                </jet-nav-link>
+                                <jet-nav-link :href="route('tipouser')" :active="route().current('tipouser')">
+                                    Tipo Usuarios
+                                </jet-nav-link>
                             </div>
                         </div>
 

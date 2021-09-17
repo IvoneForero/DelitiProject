@@ -4,6 +4,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\CalendarsController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CategoryProdsController;
+use App\Http\Controllers\DocTypesController;
+use App\Http\Controllers\TypeUsersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +32,18 @@ Route::get('/', function () {
 
 //Rutas Agenda
 Route::middleware(['auth:sanctum', 'verified'])->get('/agenda',[CalendarsController::class, 'index'])->name('agenda');
-Route::get('/api/calendar/index', [CalendarsController::class, 'index']);
+
+//Rutas Categoria
+Route::middleware(['auth:sanctum', 'verified'])->get('/categoria',[CategoryProdsController::class, 'index'])->name('categoria');
+
+//Rutas Productos
+Route::middleware(['auth:sanctum', 'verified'])->get('/producto',[ProductsController::class, 'index'])->name('producto');
+
+//Rutas Tipo Documentos
+Route::middleware(['auth:sanctum', 'verified'])->get('/tipodoc',[DocTypesController::class, 'index'])->name('tipodoc');
+
+//Rutas Tipo Usuarios
+Route::middleware(['auth:sanctum', 'verified'])->get('/tipouser',[TypeUsersController::class, 'index'])->name('tipouser');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

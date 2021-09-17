@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\type_users;
+use Inertia\Inertia;
 
 class TypeUsersController extends Controller
 {
@@ -11,8 +12,7 @@ class TypeUsersController extends Controller
     public function index(Request $request)
     {
         $reg = type_users::get();
-
-        return ['name'=>$reg];
+        return Inertia::render('TipoUsuario',['consulta'=>$reg]);
     }
     
     public function getData(Request $request)
