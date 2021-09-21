@@ -11,7 +11,9 @@ class ProductsController extends Controller
     //
     public function index(Request $request)
     {
-        $reg = products::get();
+        $reg = products::join('category_prods','products.id_prod_category','category_prods.id')
+        ->select('products.name as product', 'products.description', 'price', 'products.state', 'picture', 'category_prods.name as category')
+        ->get();
         return Inertia::render('Producto',['consulta'=>$reg]);
     }
     
