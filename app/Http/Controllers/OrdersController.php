@@ -8,6 +8,7 @@ use App\Models\orders;
 use App\Models\ord_details;
 use App\Models\deliveries;
 use Carbon\Carbon;
+use Inertia\Inertia;
 
 class OrdersController extends Controller
 {
@@ -15,8 +16,7 @@ class OrdersController extends Controller
     public function index(Request $request)
     {
         $reg = orders::get();
-
-        return ['order_date'=>$reg];
+        return Inertia::render('Pedido',['consulta'=>$reg]);
     }
 
     public function getData(Request $request)

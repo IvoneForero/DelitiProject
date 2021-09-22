@@ -8,7 +8,8 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoryProdsController;
 use App\Http\Controllers\DocTypesController;
 use App\Http\Controllers\TypeUsersController;
-
+use App\Http\Controllers\AppUsersController;
+use App\Http\Controllers\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/tipodoc',[DocTypesControl
 
 //Rutas Tipo Usuarios
 Route::middleware(['auth:sanctum', 'verified'])->get('/tipouser',[TypeUsersController::class, 'index'])->name('tipouser');
+
+//Rutas Usuarios
+Route::middleware(['auth:sanctum', 'verified'])->get('/user',[AppUsersController::class, 'index'])->name('user');
+
+//Rutas Pedidos
+Route::middleware(['auth:sanctum', 'verified'])->get('/order',[OrdersController::class, 'index'])->name('order');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

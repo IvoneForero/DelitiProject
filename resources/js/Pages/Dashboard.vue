@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Tablero">
+    <app-layout title="Deliti">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Inicio

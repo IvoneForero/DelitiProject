@@ -37,6 +37,12 @@
                                 <jet-nav-link :href="route('tipouser')" :active="route().current('tipouser')">
                                     Tipo Usuario
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('user')" :active="route().current('user')">
+                                    Usuario
+                                </jet-nav-link> 
+                                <jet-nav-link :href="route('order')" :active="route().current('order')">
+                                    Pedidos
+                                </jet-nav-link> 
                             </div>
                         </div>
 
