@@ -1,12 +1,12 @@
 <template>
     <app-layout title="Pedidos">
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="text-center font-semibold text-xl text-pink-800 leading-tight">
                 Listado de Pedidos
             </h2>
         </template>
         <div class="overflow-x-auto">
-            <div class="min-w-screen min-h-screen bg-gray-100 flex justify-center bg-gray-100 font-sans overflow-hidden">
+            <div class="min-w-screen min-h-screen bg-red-50 flex justify-center bg-red-50 font-sans overflow-hidden">
                 <div class="w-full lg:w-5/6">
                     <div class="bg-white shadow-md rounded my-6">
                         <table class="min-w-max w-full table-auto">
@@ -19,7 +19,7 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600 text-sm font-light">
-                                <tr v-for="(object, index) in consulta" :key="index" class="border-b border-gray-200 hover:bg-gray-100">
+                                <tr v-for="(object, index) in consulta" :key="index" class="border-b border-blue-100 hover:bg-gray-100">
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
                                             <span v-text="object.id"></span>
