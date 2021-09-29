@@ -96,7 +96,7 @@
                         >
                             Nuevo
                         </button>
-                    </div>        
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,9 +105,10 @@
 
 
 <script>
-    import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import Welcome from '@/Jetstream/Welcome.vue'
+   
+    import { defineComponent } from "vue";
+    import AppLayout from '@/Layouts/AppLayout.vue';
+    import Welcome from '@/Jetstream/Welcome.vue';
 
     export default defineComponent({
         components: {
@@ -115,5 +116,10 @@
             Welcome
         },
         props: ['consulta'],
+        data() { 
+            return{ 
+                modal:false
+            }
+},
     })
 </script>
