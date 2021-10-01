@@ -15,6 +15,12 @@ class TypeUsersController extends Controller
         return Inertia::render('TipoUsuario',['consulta'=>$reg]);
     }
     
+    public function index2(Request $request)
+    {
+        $reg = type_users::get();
+        return ['consulta'=>$reg];
+    }
+
     public function getData(Request $request)
     {
         $buscar=$request->idBuscar;

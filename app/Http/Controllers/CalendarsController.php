@@ -17,6 +17,12 @@ class CalendarsController extends Controller
         //return ['calendar'=>$calendar];
     }
 
+    public function index2(Request $request)
+    {
+        $calendar = calendars::get();
+        return ['calendar'=>$calendar];
+    }
+
     public function getData(Request $request)
     {
         $buscar=$request->idBuscar;

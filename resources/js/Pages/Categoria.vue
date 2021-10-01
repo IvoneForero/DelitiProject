@@ -157,6 +157,10 @@
                 modal: false,
                 titulo : "",
                 tpAccion: 1,//1 guardar 0 actualizar
+                nombre:"",
+                edo:"0",
+                idCalendar:"",
+                arrayDatos:[]
             };
         },
         methods:

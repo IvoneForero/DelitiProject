@@ -5,6 +5,7 @@
                 Gestión de Agenda
             </h1>
         </template>
+
         <div class="overflow-x-auto">
             <div class="min-w-screen min-h-screen bg-red-50 flex justify-center bg-red-50 font-sans overflow-hidden">
                 <div class="w-full lg:w-5/6">
@@ -18,7 +19,7 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600 text-sm font-light">
-                                <tr v-for="(object, index) in calendar" :key="index" class="border-b border-blue-100 hover:bg-gray-100">
+                                <tr v-for="(object, index) in this.arrayDatos" :key="index" class="border-b border-blue-100 hover:bg-gray-100">
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
                                             <span v-text="object.schedule"></span>
@@ -32,18 +33,18 @@
                                     </td>
                                     <td class="py-3 px-6 text-center w-24">
                                         <div class="flex item-left justify-left">
-                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" title="Ver" @click="ver">
+                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" title="Ver" @click="ver(object)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                                 </svg>
                                             </div>
-                                            <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110" title="Editar" @click="actualizar">
+                                            <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110" title="Editar" @click="actualizar(object)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                 </svg>
                                             </div>
-                                            <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110" title="Eliminar" @click="eliminar">
+                                            <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110" title="Eliminar" @click="eliminar(object)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                 </svg>
@@ -54,7 +55,7 @@
                             </tbody>
                         </table>
                         <div class="bg-red-50 overflow-hidden shadow-x2 sm:rounded-lg">
-                            <button @click="nuevo" type="button" class="border border-pink-600 bg-pink-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-pink-500 focus:outline-none focus:shadow-outline">
+                            <button @click="abrirModal" type="button" class="border border-pink-600 bg-pink-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-pink-500 focus:outline-none focus:shadow-outline">
                                 Nuevo
                             </button>
                         </div>
@@ -62,33 +63,31 @@
                     <!-- component -->
                     <div class="flex justify-center items-top bg-red-50 antialiased" v-if="modal==true">
                         <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
-                            <div
-                            class="flex flex-row justify-between p-6 bg-pink-100 border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
-                            >
+                            <div class="flex flex-row justify-between p-6 bg-pink-100 border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
                                 <p class="font-semibold text-gray-800">{{titulo}}</p>
-
                                 <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-red-500 uppercase  rounded">X</button>
                             </div>
                             <div class="flex flex-col px-6 py-5 bg-gray-50">
                                 <div class="mb-3 space-y-2 w-full">
                                     <label class="text-gray-700 select-none font-medium py-2">Agenda</label>
-                                    <input placeholder="Agenda" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
+                                    <input v-model="nombre" placeholder="Ingrese agenda" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
                                     <p class="text-red text-xs hidden">Please fill out this field.</p>
                                 </div>
                                 <label for="default" class="text-gray-700 select-none font-medium">Seleccione un estado</label>
-                                <select class="border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
-                                    <option>Disponible</option>
-                                    <option>NO Disponible</option>
+                                <select v-model="edo" class="border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                                    <option value="0">Disponible</option>
+                                    <option value="1">NO Disponible</option>
                                 </select>
                             </div>
-                            <div
-                            class="flex flex-row items-center justify-between p-5 text-gray-600 border-t border-gray-200 rounded-bl-lg rounded-br-lg"
-                            >
+                            <div class="flex flex-row items-center justify-between p-5 text-gray-600 border-t border-gray-200 rounded-bl-lg rounded-br-lg">
                                 <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-purple-600 rounded">
                                     Cancelar
                                 </button>
-                                <button class="px-4 py-2 text-white font-semibold bg-green-400 rounded">
+                                <button v-if="tpAccion==0" @click="registrar" class="px-4 py-2 text-white font-semibold bg-green-400 rounded">
                                     Guardar
+                                </button>
+                                <button v-if="tpAccion==1" @click="update" class="px-4 py-2 text-white font-semibold bg-green-400 rounded">
+                                    Actualizar
                                 </button>
                             </div>
                         </div>
@@ -112,12 +111,12 @@
                                         </div>
                                     </div>
                                     <button @click="confirmar" class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">SI</button>
-                                    <button @click="confirmar" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
+                                    <button @click="confirmarNo" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- eliminar -->
+                    <!-- eliminar -->                    
                 </div>
             </div>     
         </div>
@@ -125,54 +124,162 @@
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import Welcome from '@/Jetstream/Welcome.vue'
+import { defineComponent } from "vue";
+import AppLayout from "@/Layouts/AppLayout.vue";
 
-    export default defineComponent({
-        components: 
-        {
-            AppLayout
+export default defineComponent({
+    components: {
+        AppLayout
+    },
+    data() 
+    {
+        return {
+            modal: false,
+            titulo:"",
+            tpAccion:1,//1 guardar 0 actualizar
+            nombre:"",
+            edo:"0",
+            idCalendar:"",
+            arrayDatos:[]
+        };
+    },
+    methods: {
+        limpiar(){
+            this.nombre="";
+            this.edo="0";
         },
-        data() 
-        {
-            return{
-                modal: false,
-                titulo : "",
-                tpAccion: 1,//1 guardar 0 actualizar
-            };
+        registrar(){     
+            let me=this;
+            var url="/api/calendar/registrar";
+            axios.post(url, 
+            {
+                schedule:this.nombre.toUpperCase(),
+                state:this.edo
+            })
+            .then(function(response)
+            {
+                me.listarDatos();
+                me.limpiar();
+                me.cerrarModal();
+                alert("Se registro correctamente");
+            })
+            .catch(function(error) 
+            {
+                alert(error);
+            });
         },
-        methods:
-        {
-            nuevo()
-            {
-                this.titulo = "Nuevo Registro";
-                this.modal = true;
-            },    
-            ver()
-            {
-                this.titulo = "Ver Registro";
-                this.modal = true;
-            },    
-            actualizar()
-            {
-                this.modal = true;
-                this.tpAccion=0;
-                this.titulo = "Actualizar Registro";
-            },
-            eliminar()
-            {
-                this.tpAccion=2;
-            },
-            cerrarModal()
-            {
-                this.modal = false;
-            },
-            confirmar()
-            {
-                this.tpAccion=0;
-            }
+        abrirModal(){
+            this.titulo = "Nuevo Registro"
+            this.modal = true;
+            this.tpAccion=0;
+            this.nombre="";
         },
+        update()
+        {
+            let me=this;
+            var url="/api/calendar/actualizar";
+            axios.put(url, {
+                id:this.idCalendar,
+                schedule:this.nombre.toUpperCase(),
+                state:this.edo
+            })
+            .then(function(response) {
+                me.listarDatos();      
+                alert("Se actualizo correctamente");
+            })
+            .catch(function(error) {
+                alert(error);
+            });
+        }, 
+        actualizar(data=[])
+        {
+            this.idCalendar=data['id'];
+            this.nombre=data['schedule'];
+            this.edo=data['state'];
+            this.modal = true;
+            this.tpAccion=1;
+            this.titulo = "Actualizar Registro"
+        },
+        delete(){
+            let me=this;
+            var url="/api/calendar/eliminar" ;
+            axios.post(url,{
+                id:this.idCalendar
+            })
+            .then(function(response) {
+                me.listarDatos();
+                alert("Se elimino correctamente");        
+            })
+            .catch(function(error) {
+                alert(error);
+            })
+        },
+        eliminar(data=[]){
+            this.idCalendar=data['id'];
+            this.tpAccion=2;
+        },
+        listarDatos(){
+            let me=this;
+            var url="/api/calendar/index2";
+
+            axios.get(url)
+            .then(function(response){
+                var respuesta=response.data;
+                me.arrayDatos=respuesta.calendar;
+            })
+            .catch(function(error){
+            })
+        },
+        cerrarModal()
+        {
+            this.modal = false;
+            me.limpiar();
+        },
+        confirmar(){
+            this.delete();
+            this.tpAccion=0;
+        },
+        confirmarNO(){
+            this.tpAccion=0;
+        },
+        ver(data=[]){
+            this.idCalendar=data['id'];
+            this.nombre=data['schedule'];
+            this.edo=data['state'];
+            this.modal = true;
+            this.tpAccion=-1;
+            this.titulo = "Ver Registro"
+        }
+    },
+    mounted(){
+        this.listarDatos();
+    },
         props: ["calendar"],
-    });
+    },
+);
+
 </script>
+<style>
+
+.table {
+  border-spacing: 0 15px;
+}
+
+i {
+  font-size: 1rem !important;
+}
+
+.table tr {
+  border-radius: 20px;
+}
+
+tr td:nth-child(n + 5),
+tr th:nth-child(n + 5) {
+  border-radius: 0 0.625rem 0.625rem 0;
+}
+
+tr td:nth-child(1),
+tr th:nth-child(1) {
+  border-radius: 0.625rem 0 0 0.625rem;
+}
+</style>

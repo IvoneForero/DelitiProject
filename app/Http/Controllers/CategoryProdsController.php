@@ -14,6 +14,12 @@ class CategoryProdsController extends Controller
         $catprod = category_prods::get();
         return Inertia::render('Categoria',['categoria'=>$catprod]);
     }
+
+    public function index2(Request $request)
+    {
+        $catprod = category_prods::get();
+        return ['categoria'=>$catprod];
+    }
     
     public function getData(Request $request)
     {

@@ -14,6 +14,12 @@ class DocTypesController extends Controller
         $reg = doc_types::get();
         return Inertia::render('TipoDoc',['consulta'=>$reg]);
     }
+
+    public function index2(Request $request)
+    {
+        $reg = doc_types::get();
+        return ['consulta'=>$reg];
+    }
     
     public function getData(Request $request)
     {
