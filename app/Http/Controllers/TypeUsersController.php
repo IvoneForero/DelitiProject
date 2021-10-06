@@ -25,12 +25,8 @@ class TypeUsersController extends Controller
     {
         $buscar=$request->idBuscar;
 
-        if ($buscar=='') {
-            $reg = type_users::select('name')->get();
-        }else{
-            $reg = type_users::select('name')->where('id','=',$buscar)->get();
-        }
-        return ['reg'=>$reg];
+        $reg = type_users::select('id','name')->OrderBy('name','asc')->get();
+        return ['consulta'=>$reg];
     }
 
     public function store(Request $request)

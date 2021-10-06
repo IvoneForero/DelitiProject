@@ -44,9 +44,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/api/categoria/index2',[Ca
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/categoria/registrar',[CategoryProdsController::class, 'store']);
 Route::middleware(['auth:sanctum', 'verified'])->put('/api/categoria/actualizar',[CategoryProdsController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/categoria/eliminar',[CategoryProdsController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/categoria/getdata',[CategoryProdsController::class, 'getdata']);
+Route::put('/api/catprod/update', [CategoryProdsController::class, 'update']);
 
 //Rutas Productos
 Route::middleware(['auth:sanctum', 'verified'])->get('/producto',[ProductsController::class, 'index'])->name('producto');
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/producto/index2',[ProductsController::class, 'index2']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/api/producto/registrar',[ProductsController::class, 'store']);
+Route::middleware(['auth:sanctum', 'verified'])->put('/api/producto/actualizar',[ProductsController::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/api/producto/eliminar',[ProductsController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/producto/getdata',[ProductsController::class, 'getdata']);
+Route::post('/api/product/store', [ProductsController::class, 'store']);
 
 //Rutas Tipo Documentos
 Route::middleware(['auth:sanctum', 'verified'])->get('/tipodoc',[DocTypesController::class, 'index'])->name('tipodoc');
@@ -54,6 +62,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/api/tipodoc/index2',[DocT
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/tipodoc/registrar',[DocTypesController::class, 'store']);
 Route::middleware(['auth:sanctum', 'verified'])->put('/api/tipodoc/actualizar',[DocTypesController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/tipodoc/eliminar',[DocTypesController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/tipodoc/getdata',[DocTypesController::class, 'getdata']);
 
 //Rutas Tipo Usuarios
 Route::middleware(['auth:sanctum', 'verified'])->get('/tipouser',[TypeUsersController::class, 'index'])->name('tipouser');
@@ -61,9 +70,15 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/api/tipouser/index2',[Typ
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/tipouser/registrar',[TypeUsersController::class, 'store']);
 Route::middleware(['auth:sanctum', 'verified'])->put('/api/tipouser/actualizar',[TypeUsersController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/tipouser/eliminar',[TypeUsersController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/tipouser/getdata',[TypeUsersController::class, 'getdata']);
 
 //Rutas Usuarios
 Route::middleware(['auth:sanctum', 'verified'])->get('/user',[AppUsersController::class, 'index'])->name('user');
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/user/index2',[AppUsersController::class, 'index2']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/api/user/registrar',[AppUsersController::class, 'store']);
+Route::middleware(['auth:sanctum', 'verified'])->put('/api/user/actualizar',[AppUsersController::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/api/user/eliminar',[AppUsersController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/user/getdata',[AppUsersController::class, 'getdata']);
 
 //Rutas Pedidos
 Route::middleware(['auth:sanctum', 'verified'])->get('/order',[OrdersController::class, 'index'])->name('order');

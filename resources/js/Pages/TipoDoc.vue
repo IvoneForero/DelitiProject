@@ -63,7 +63,7 @@
                             <div class="flex flex-col px-6 py-5 bg-gray-50">
                                 <div class="mb-3 space-y-2 w-full">
                                     <label class="text-pink-700 select-none font-medium">Tipo Documento</label>
-                                    <input v-model="nombre"  placeholder="Ingrese tipo documento" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
+                                    <input v-model="nombre" placeholder="Ingrese tipo documento" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
                                     <p class="text-red text-xs hidden">Please fill out this field.</p>
                                 </div>
                             </div>
@@ -148,18 +148,18 @@
                 var url="/api/tipodoc/registrar";
                 axios.post(url, 
                 {
-                    tipo:this.nombre.toUpperCase()
+                    tipo:this.nombre
                 })
                 .then(function(response)
                 {
                     me.listarDatos();
                     me.limpiar();
                     me.cerrarModal();
-                    alert("Se registro correctamente");
+                    me.mensaje('Registro creado!!','El registro se creo correctamente.','success');
                 })
                 .catch(function(error) 
                 {
-                    alert(error);
+                    me.mensaje('Error al crear Registro!!',error.message,'error');
                 });
             },
             limpiar()
@@ -172,10 +172,13 @@
                 this.modal = true;
                 this.tpAccion=0;
             },    
-            ver()
+            ver(data=[])
             {
-                this.titulo = "Ver Registro";
+                this.idTpDocumento=data['id'];
+                this.nombre=data['doc_type'];
                 this.modal = true;
+                this.tpAccion=-1;
+                this.titulo = "Ver Registro"
             },    
             update()
             {
@@ -187,10 +190,10 @@
                 })
                 .then(function(response) {
                     me.listarDatos();      
-                    alert("Se actualizo correctamente");
+                    me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success');
                 })
                 .catch(function(error) {
-                    alert(error);
+                    me.mensaje('Error al guardar!!',error.message,'success');
                 });
             }, 
             actualizar(data=[])
@@ -206,18 +209,18 @@
                 let me=this;
                 var url="/api/tipodoc/eliminar" ;
                 axios.post(url,{
-                    id:this.idTpUsuario
+                    id:this.idTpDocumento
                 })
                 .then(function(response) {
                     me.listarDatos();
-                    alert("Se elimino correctamente");        
+                    me.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');        
                 })
                 .catch(function(error) {
-                    alert(error);
+                    me.mensaje('Error al eliminar!!',error.message,'success');
                 })
             },
             eliminar(data=[]){
-                this.idTpUsuario=data['id'];
+                this.idTpDocumento=data['id'];
                 this.tpAccion=2;
             },
             cerrarModal()
@@ -246,7 +249,14 @@
             confirmarNO()
             {
                 this.tpAccion=0;
-            }
+            },
+            mensaje(head, body, button){
+                Swal.fire(
+                    head,
+                    body,
+                    button
+                )            
+            }            
         },
         mounted()
         {

@@ -26,7 +26,7 @@
                                     </td>
                                     <td class="py-3 px-6 text-center w-24">
                                         <div class="flex item-left justify-left">
-                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" title="Ver" @click="ver">
+                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" title="Ver" @click="ver(object)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -153,18 +153,18 @@
                 var url="/api/tipouser/registrar";
                 axios.post(url, 
                 {
-                    nombre:this.nombre.toUpperCase()
+                    nombre:this.nombre
                 })
                 .then(function(response)
                 {
                     me.listarDatos();
                     me.limpiar();
                     me.cerrarModal();
-                    alert("Se registro correctamente");
+                    me.mensaje('Registro creado!!','El registro se creo correctamente.','success');
                 })
                 .catch(function(error) 
                 {
-                    alert(error);
+                    me.mensaje('Error al crear Registro!!',error.message,'error');
                 });
             },
             limpiar(){
@@ -191,10 +191,10 @@
                 })
                 .then(function(response) {
                     me.listarDatos();      
-                    alert("Se actualizo correctamente");
+                    me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success');
                 })
                 .catch(function(error) {
-                    alert(error);
+                    me.mensaje('Error al actualizar!!',error.message,'success');
                 });
             }, 
             actualizar(data=[])
@@ -213,10 +213,10 @@
                 })
                 .then(function(response) {
                     me.listarDatos();
-                    alert("Se elimino correctamente");        
+                    ame.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');        
                 })
                 .catch(function(error) {
-                    alert(error);
+                    me.mensaje('Error al eliminar!!',error.message,'success');
                 })
             },
             eliminar(data=[]){
@@ -245,7 +245,14 @@
             },
             confirmarNO(){
                 this.tpAccion=0;
-            }
+            },
+            mensaje(head, body, button){
+                Swal.fire(
+                    head,
+                    body,
+                    button
+                )            
+            }            
         },
         mounted(){
             this.listarDatos();

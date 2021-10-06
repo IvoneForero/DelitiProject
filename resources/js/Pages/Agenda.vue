@@ -146,7 +146,11 @@ export default defineComponent({
     methods: {
         limpiar(){
             this.nombre="";
-            this.edo="0";
+            this.edo="0";            
+        },    
+        cerrarModal()
+        {
+            this.modal = false;
         },
         registrar(){     
             let me=this;
@@ -161,11 +165,11 @@ export default defineComponent({
                 me.listarDatos();
                 me.limpiar();
                 me.cerrarModal();
-                alert("Se registro correctamente");
+                me.mensaje('Registro creado!!','El registro se creo correctamente.','success');
             })
             .catch(function(error) 
             {
-                alert(error);
+               me.mensaje('Error al crear Registro!!',error.message,'error');
             });
         },
         abrirModal(){
@@ -184,11 +188,11 @@ export default defineComponent({
                 state:this.edo
             })
             .then(function(response) {
-                me.listarDatos();      
-                alert("Se actualizo correctamente");
+                me.listarDatos();     
+                me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success'); 
             })
             .catch(function(error) {
-                alert(error);
+                me.mensaje('Error al actualizar!!',error.message,'success');
             });
         }, 
         actualizar(data=[])
@@ -208,10 +212,10 @@ export default defineComponent({
             })
             .then(function(response) {
                 me.listarDatos();
-                alert("Se elimino correctamente");        
+                me.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');       
             })
             .catch(function(error) {
-                alert(error);
+                me.mensaje('Error al eliminar!!',error.message,'success');
             })
         },
         eliminar(data=[]){
@@ -230,11 +234,6 @@ export default defineComponent({
             .catch(function(error){
             })
         },
-        cerrarModal()
-        {
-            this.modal = false;
-            me.limpiar();
-        },
         confirmar(){
             this.delete();
             this.tpAccion=0;
@@ -249,6 +248,13 @@ export default defineComponent({
             this.modal = true;
             this.tpAccion=-1;
             this.titulo = "Ver Registro"
+        },
+        mensaje(head, body, button){
+            Swal.fire(
+                head,
+                body,
+                button
+            )            
         }
     },
     mounted(){

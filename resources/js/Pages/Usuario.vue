@@ -8,7 +8,7 @@
         <div class="overflow-x-auto">
             <div class="min-w-screen min-h-screen bg-red-50 flex justify-center bg-red-50 font-sans overflow-hidden">
                 <div class="w-full lg:w-5/6">
-                    <div class="bg-white shadow-md rounded my-6">
+                    <div class="bg-white shadow-md rounded my-6" v-if="modal==false">
                         <table class="min-w-max w-full table-auto">
                             <thead>
                                 <tr class="bg-pink-100 text-pink-900 uppercase text-sm leading-normal">
@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600 text-sm font-light">
-                                <tr v-for="(object, index) in consulta" :key="index" class="border-b border-blue-100 hover:bg-gray-100">
+                                <tr v-for="(object, index) in this.arrayDatos" :key="index" class="border-b border-blue-100 hover:bg-gray-100">
                                     <td class="py-3 px-6 text-left">
                                         <div class="flex items-center">
                                             <span>{{ object.type }}</span>
@@ -67,7 +67,7 @@
                                     </td>
                                     <td class="py-3 px-6 text-center w-24">
                                         <div class="flex item-left justify-left">
-                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110" title="Ver" @click="ver(object)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -88,14 +88,79 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="bg-red-50 overflow-hidden shadow-x2 sm:rounded-lg">
+                            <button
+                                @click="abrirModal"
+                                type="button"
+                                class="border border-pink-600 bg-pink-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-pink-500 focus:outline-none focus:shadow-outline"
+                            >
+                                Nuevo
+                            </button>
+                        </div>
                     </div>
-                    <div class="bg-red-50 overflow-hidden shadow-x2 sm:rounded-lg">
-                        <button
-                            type="button"
-                            class="border border-pink-600 bg-pink-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-pink-500 focus:outline-none focus:shadow-outline"
-                        >
-                            Nuevo
-                        </button>
+                    <!-- component -->
+                    <div class="flex justify-center items-top bg-red-50 antialiased" v-if="modal==true">
+
+                        <section class="max-w-4xl p-6 mx-auto bg-pink-100 rounded-md shadow-md dark:bg-gray-800 mt-20">
+                            <h1 class="text-xl font-bold text-pink-900 capitalize dark:text-white">{{titulo}}</h1>
+                            <form>
+                                <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                                    <div>
+                                        <label class="text-pink-800 dark:text-gray-200" for="passwordConfirmation">Tipo Documento</label>
+                                        <select v-model="idTipoDoc" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                            <option v-for="item in arrayTipoDoc" :key="item.id" :value="item.id">{{ item.doc_type }}</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="text-pink-800 dark:text-gray-200" for="username">Numero Documento</label>
+                                        <input v-model="numdoc" id="numdoc" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+                                    <div>
+                                        <label class="text-pink-800 dark:text-gray-200" for="username">Nombres</label>
+                                        <input v-model="nombres" id="username" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+                                    <div>
+                                        <label class="text-pink-800 dark:text-gray-200" for="username">Apellidos</label>
+                                        <input v-model="apellidos" id="usersurname" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+
+                                    <div>
+                                        <label class="text-pink-800 dark:text-gray-200" for="emailAddress">Teléfono</label>
+                                        <input v-model="telefono" id="phone" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+
+                                    <div>
+                                        <label class="text-pink-800 dark:text-gray-200" for="emailAddress">Correo electronico</label>
+                                        <input v-model="email" id="emailAddress" type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+
+                                    <div>
+                                        <label class="text-pink-800 dark:text-gray-200" for="emailAddress">Dirección</label>
+                                        <input v-model="direccion" id="Address" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                    </div>
+
+                                    <div>
+                                        <label class="text-pink-800 dark:text-gray-200" for="passwordConfirmation">Tipo Usuario</label>
+                                        <select v-model="idTipoUsuario" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                            <option v-for="item in arrayTipoUsuario" :key="item.id" :value="item.id">{{ item.name }}</option>
+                                        </select>
+                                    </div>
+                                    <br/>
+                                </div>
+                                <div class="flex flex-row items-center justify-between p-5 text-gray-600 border-t border-gray-200 rounded-bl-lg rounded-br-lg">
+                                    <button @click="cerrarModal" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-700 rounded-md hover:bg-pink-600 focus:outline-none focus:bg-pink-600">
+                                        Cancelar
+                                    </button>
+                                    <button v-if="tpAccion==0" @click="registrar" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-green-500 rounded-md hover:bg-green-400 focus:outline-none focus:bg-green-400">
+                                        Guardar
+                                    </button>
+                                    <button v-if="tpAccion==1" @click="update" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
+                                        Actualizar
+                                    </button>
+                                </div>
+
+                            </form>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -110,16 +175,204 @@
     import AppLayout from '@/Layouts/AppLayout.vue';
     import Welcome from '@/Jetstream/Welcome.vue';
 
-    export default defineComponent({
-        components: {
-            AppLayout,
-            Welcome
+export default defineComponent(
+    {
+        components: 
+        {
+            AppLayout
         },
-        props: ['consulta'],
-        data() { 
-            return{ 
-                modal:false
-            }
-},
-    })
+        data() 
+        {
+            return {
+                modal: false,
+                titulo:"",
+                tpAccion:1,//1 guardar 0 actualizar
+                idTipoDoc:"",
+                numdoc:"",
+                nombres:"",
+                apellidos:"",
+                telefono:"",
+                email:"",
+                direccion:"",
+                idUsuario:"",
+                arrayDatos:[],
+                arrayTipoDoc:[],
+                arrayTipoUsuario:[],
+                titulo:"",
+            };
+        },
+        methods: {
+            listarDatos()
+            {
+                let me=this;
+                var url="/api/user/index2";
+
+                axios.get(url)
+                .then(function(response){
+                    var respuesta=response.data;
+                    me.arrayDatos=respuesta.consulta;
+                })
+                .catch(function(error){
+                })
+            },
+            abrirModal()
+            {
+                let me=this;
+                this.titulo = "Creacion Usuario"
+                this.modal = true;
+                this.tpAccion=0;
+                this.limpiar();
+            },
+            listarTipoDoc()
+            {
+                let me=this;
+                var url="/api/tipodoc/getdata";
+
+                axios.get(url)
+                .then(function(response){
+                    var respuesta=response.data;
+                    me.arrayTipoDoc=respuesta.consulta;
+                })
+                .catch(function(error){
+                })
+            },
+            listarTipoUsuario()
+            {
+                let me=this;
+                var url="/api/tipouser/getdata";
+
+                axios.get(url)
+                .then(function(response){
+                    var respuesta=response.data;
+                    me.arrayTipoUsuario=respuesta.consulta;
+                })
+                .catch(function(error){
+                })
+            },
+            ver(data=[]){
+                this.idUsuario=data['id'];
+                this.idTipoDoc=data['idDoc'];
+                this.numdoc=data['doc_num'];
+                this.nombres=data['names'];                
+                this.apellidos=data['surnames'];                
+                this.telefono=data['phone'];
+                this.email=data['email'];
+                this.direccion=data['address'];
+                this.idTipoUsuario=data['idUser'];
+                this.modal = true;
+                this.tpAccion=-1;
+                this.titulo = "Ver Usuario"
+            },
+            limpiar(){
+                this.idUsuario="";
+                this.idTipoDoc="";
+                this.numdoc="";
+                this.nombres="";                
+                this.apellidos="";                
+                this.telefono="";
+                this.email="";
+                this.direccion="";
+                this.idTipoUsuario="";
+            },    
+            registrar(){     
+                let me=this;
+                var url="/api/user/registrar";
+                axios.post(url, 
+                {
+                    doc_type:this.idTipoDoc,
+                    doc_num:this.numdoc,
+                    names:this.nombres,
+                    surnames:this.apellidos,
+                    phone:this.telefono,
+                    address:this.direccion,
+                    email:this.email,
+                    id_type_user:this.idTipoUsuario
+                })
+                .then(function(response)
+                {
+                    me.mensaje('Registro creado!!','El registro se creo correctamente.','success');
+                })
+                .catch(function(error) 
+                {
+                me.mensaje('Error al crear Registro!!',error.message,'error');
+                });
+            },
+            mensaje(head, body, button){
+                Swal.fire(
+                    head,
+                    body,
+                    button
+                )            
+            },
+            cerrarModal()
+            {
+                this.modal = false;
+            },
+        update()
+        {
+            let me=this;
+            var url="/api/calendar/actualizar";
+            axios.put(url, {
+                id:this.idCalendar,
+                schedule:this.nombre.toUpperCase(),
+                state:this.edo
+            })
+            .then(function(response) {
+                me.listarDatos();     
+                me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success'); 
+            })
+            .catch(function(error) {
+                me.mensaje('Error al actualizar!!',error.message,'success');
+            });
+        }, 
+        actualizar(data=[])
+        {
+            this.idCalendar=data['id'];
+            this.nombre=data['schedule'];
+            this.edo=data['state'];
+            this.modal = true;
+            this.tpAccion=1;
+            this.titulo = "Actualizar Registro"
+        },
+        delete(){
+            let me=this;
+            var url="/api/calendar/eliminar" ;
+            axios.post(url,{
+                id:this.idCalendar
+            })
+            .then(function(response) {
+                me.listarDatos();
+                me.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');       
+            })
+            .catch(function(error) {
+                me.mensaje('Error al eliminar!!',error.message,'success');
+            })
+        },
+        eliminar(data=[]){
+            this.idCalendar=data['id'];
+            this.tpAccion=2;
+        },
+        confirmar(){
+            this.delete();
+            this.tpAccion=0;
+        },
+        confirmarNO(){
+            this.tpAccion=0;
+        },
+        mensaje(head, body, button){
+            Swal.fire(
+                head,
+                body,
+                button
+            )            
+        }
+    },
+    mounted(){
+        this.listarDatos();
+        this.listarTipoDoc();
+        this.listarTipoUsuario();
+    },
+        props: ["calendar"],
+    },
+);
 </script>

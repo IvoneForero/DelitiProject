@@ -25,12 +25,9 @@ class DocTypesController extends Controller
     {
         $buscar=$request->idBuscar;
 
-        if ($buscar=='') {
-            $reg = doc_types::select('doc_type')->get();
-        }else{
-             $reg = doc_types::select('doc_type')->where('id','=',$buscar)->get();
-        }
-        return ['reg'=>$reg];
+        $reg = doc_types::select('id','doc_type')->OrderBy('doc_type','asc')->get();
+        return ['consulta'=>$reg];
+
     }
 
     public function store(Request $request)

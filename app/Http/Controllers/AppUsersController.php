@@ -13,10 +13,19 @@ class AppUsersController extends Controller
     {
         $reg = app_users::join('doc_types','app_users.doc_type','doc_types.id')
         ->join('type_users','app_users.id_type_user','type_users.id')
-        ->select('app_users.id','doc_types.doc_type as type','app_users.doc_num','app_users.names','app_users.surnames','app_users.phone','app_users.address','app_users.email','type_users.name as tip_user')
+        ->select('app_users.id', 'doc_types.id as idDoc', 'doc_types.doc_type as type','app_users.doc_num','app_users.names','app_users.surnames','app_users.phone','app_users.address','app_users.email', 'type_users.id as idUser', 'type_users.name as tip_user')
         ->get();
         return Inertia::render('Usuario',['consulta'=>$reg]);
     }
+
+    public function index2(Request $request)
+    {
+        $reg = app_users::join('doc_types','app_users.doc_type','doc_types.id')
+        ->join('type_users','app_users.id_type_user','type_users.id')
+        ->select('app_users.id', 'doc_types.id as idDoc', 'doc_types.doc_type as type','app_users.doc_num','app_users.names','app_users.surnames','app_users.phone','app_users.address','app_users.email', 'type_users.id as idUser', 'type_users.name as tip_user')
+        ->get();
+        return ['consulta'=>$reg];
+    }    
     
     public function getData(Request $request)
     {
@@ -27,7 +36,7 @@ class AppUsersController extends Controller
         }else{
             $reg = app_users::select('names')->where('id','=',$buscar)->get();
         }
-        return ['reg'=>$reg];
+        return ['consulta'=>$reg];
     }
 
     public function store(Request $request)

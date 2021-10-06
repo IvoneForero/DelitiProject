@@ -16,7 +16,15 @@ class ProductsController extends Controller
         ->get();
         return Inertia::render('Producto',['consulta'=>$reg]);
     }
-    
+
+    public function index2(Request $request)
+    {
+        $reg = products::join('category_prods','products.id_prod_category','category_prods.id')
+        ->select('products.id as id','products.name as product', 'products.description', 'price', 'products.state', 'picture', 'category_prods.id as id_category', 'category_prods.name as category')
+        ->get();
+        return ['consulta'=>$reg];
+    }
+
     public function getData(Request $request)
     {
         $buscar=$request->idBuscar;
@@ -33,8 +41,8 @@ class ProductsController extends Controller
     {
         $reg = new products;
         $reg->name = $request->name;
-        $reg->description = $request->descrip;
-        $reg->id_prod_category = $request->idProdCa;
+        $reg->description = $request->description;
+        $reg->id_prod_category = $request->id_prod_category;
         $reg->price = $request->price;
         $reg->state = $request->state;
         $reg->picture = $request->picture;
@@ -45,8 +53,8 @@ class ProductsController extends Controller
     {
         $reg = products::find($request->id);
         $reg->name = $request->name;
-        $reg->description = $request->descrip;
-        $reg->id_prod_category = $request->idProdCa;
+        $reg->description = $request->description;
+        $reg->id_prod_category = $request->id_prod_category;
         $reg->price = $request->price;
         $reg->state = $request->state;
         $reg->picture = $request->picture;

@@ -25,12 +25,8 @@ class CategoryProdsController extends Controller
     {
         $buscar=$request->idBuscar;
 
-        if ($buscar=='') {
-            $catprod = category_prods::select('name')->get();
-        }else{
-             $catprod = category_prods::select('name')->where('id','=',$buscar)->get();
-        }
-        return ['catprod'=>$catprod];
+        $reg = category_prods::select('id','name')->OrderBy('name','asc')->get();
+        return ['catprod'=>$reg];
     }
 
     public function store(Request $request)
@@ -47,7 +43,7 @@ class CategoryProdsController extends Controller
         $catpro = category_prods::find($request->id);
         $catpro->name = $request->name;
         $catpro->description = $request->description;
-        $catpro->status = $request->status;
+        $catpro->state = $request->state;
         $catpro->save();
     }  
 
