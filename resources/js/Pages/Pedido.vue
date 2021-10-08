@@ -72,16 +72,16 @@
                             </button>
                         </div>                        
                     </div>
-                    <!-- component modal-->
+                    <!-- modal-->
                     <div class="flex justify-center items-top bg-red-50 antialiased" v-if="modal==true">
                         <div class="max-w-4xl p-6 mx-auto bg-pink-100 rounded-md shadow-md dark:bg-gray-800 mt-20">
                             <h1 class="text-xl font-bold text-pink-900 capitalize dark:text-white">{{titulo}} {{idPedido}}</h1>
-                            <h3 class="text-xl font-bold text-pink-900 capitalize dark:text-white">Fecha Pedido : {{fecha}}</h3>
+                            <h3 v-if="tpAccion==-1" class="text-xl font-bold text-pink-900 capitalize dark:text-white">Fecha Pedido : {{fecha}}</h3>
                             <div>
                                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-4">
                                     <div>
                                         <label class="text-pink-800 dark:text-gray-200" for="passwordConfirmation">Tipo Documento</label>
-                                        <select v-model="idTipoDoc" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-pink-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                        <select v-model="idTipoDoc" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                             <option v-for="item in arrayTipoDoc" :key="item.id" :value="item.id">{{ item.doc_type }}</option>
                                         </select>
                                     </div>
@@ -244,7 +244,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- component -->                    
+                    <!-- modal -->                    
                 </div>
             </div>
         </div>
