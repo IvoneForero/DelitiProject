@@ -37,6 +37,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/api/calendar/index2',[Cal
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/calendar/registrar',[CalendarsController::class, 'store']);
 Route::middleware(['auth:sanctum', 'verified'])->put('/api/calendar/actualizar',[CalendarsController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/calendar/eliminar',[CalendarsController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/calendar/getdata',[CalendarsController::class, 'getdata']);
 
 //Rutas Categoria
 Route::middleware(['auth:sanctum', 'verified'])->get('/categoria',[CategoryProdsController::class, 'index'])->name('categoria');
@@ -82,6 +83,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/api/user/getdata',[AppUse
 
 //Rutas Pedidos
 Route::middleware(['auth:sanctum', 'verified'])->get('/order',[OrdersController::class, 'index'])->name('order');
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/order/index2',[OrdersController::class, 'index2']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

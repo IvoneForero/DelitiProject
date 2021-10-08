@@ -19,6 +19,16 @@ class OrdersController extends Controller
         return Inertia::render('Pedido',['consulta'=>$reg]);
     }
 
+    public function index2(Request $request)
+    {
+        $reg = orders::get();
+//        $reg = orders::join('doc_types','app_users.doc_type','doc_types.id')
+//        ->join('type_users','app_users.id_type_user','type_users.id')
+//        ->select('app_users.id', 'doc_types.id as idDoc', 'doc_types.doc_type as type','app_users.doc_num','app_users.names','app_users.surnames','app_users.phone','app_users.address','app_users.email', 'type_users.id as idUser', 'type_users.name as tip_user')
+//        ->get();
+        return ['orders'=>$reg];
+    }    
+
     public function getData(Request $request)
     {
         $buscar=$request->idBuscar;

@@ -27,14 +27,8 @@ class ProductsController extends Controller
 
     public function getData(Request $request)
     {
-        $buscar=$request->idBuscar;
-
-        if ($buscar=='') {
-            $reg = products::select('description')->get();
-        }else{
-        $reg = products::select('description')->where('id','=',$buscar)->get();
-        }
-        return ['reg'=>$reg];
+        $reg = products::select('id','name','price')->get();
+        return ['consulta'=>$reg];
     }
 
     public function store(Request $request)

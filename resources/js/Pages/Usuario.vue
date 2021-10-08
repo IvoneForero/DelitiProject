@@ -12,12 +12,12 @@
                         <table class="min-w-max w-full table-auto">
                             <thead>
                                 <tr class="bg-pink-100 text-pink-900 uppercase text-sm leading-normal">
-                                    <th class="py-3 px-6 text-left">Tipo </th>
-                                    <th class="py-3 px-6 text-left">Numero Documento</th>
+                                    <th class="py-3 px-6 text-left">Tipo</th>
+                                    <th class="py-3 px-6 text-left">Número Documento</th>
                                     <th class="py-3 px-6 text-left">Nombres</th>
                                     <th class="py-3 px-6 text-left">Apellidos</th>
-                                    <th class="py-3 px-6 text-left">Telefono</th>
-                                    <th class="py-3 px-6 text-left">Direccion</th>
+                                    <th class="py-3 px-6 text-left">Teléfono</th>
+                                    <th class="py-3 px-6 text-left">Dirección</th>
                                     <th class="py-3 px-6 text-left">Email</th>
                                     <th class="py-3 px-6 text-left">Rol</th>
                                     <th class="py-3 px-6 text-left">Acción</th>
@@ -73,12 +73,12 @@
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                                                 </svg>
                                             </div>
-                                            <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110">
+                                            <div class="w-4 mr-2 transform hover:text-green-500 hover:scale-110" title="Editar" @click="actualizar(object)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                                                 </svg>
                                             </div>
-                                            <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110">
+                                            <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110" title="Eliminar" @click="eliminar(object)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                 </svg>
@@ -88,22 +88,22 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="bg-red-50 overflow-hidden shadow-x2 sm:rounded-lg">
-                            <button
+                        <div class="bg-pink-100 overflow-hidden shadow-x2">
+                            <button 
                                 @click="abrirModal"
                                 type="button"
                                 class="border border-pink-600 bg-pink-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-pink-500 focus:outline-none focus:shadow-outline"
                             >
-                                Nuevo
+                                Nuevo Usuario
                             </button>
                         </div>
                     </div>
                     <!-- component -->
                     <div class="flex justify-center items-top bg-red-50 antialiased" v-if="modal==true">
 
-                        <section class="max-w-4xl p-6 mx-auto bg-pink-100 rounded-md shadow-md dark:bg-gray-800 mt-20">
+                        <div class="max-w-4xl p-6 mx-auto bg-pink-100 rounded-md shadow-md dark:bg-gray-800 mt-20">
                             <h1 class="text-xl font-bold text-pink-900 capitalize dark:text-white">{{titulo}}</h1>
-                            <form>
+                            <div>
                                 <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                                     <div>
                                         <label class="text-pink-800 dark:text-gray-200" for="passwordConfirmation">Tipo Documento</label>
@@ -159,9 +159,36 @@
                                     </button>
                                 </div>
 
-                            </form>
-                        </section>
+                            </div>
+                        </div>
                     </div>
+                    <!-- component -->
+                    <!-- eliminar -->
+                    <div v-if="tpAccion==2">
+                        <div class="bg-opacity-25 flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-gray-600">
+                            <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                            class="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <div class="flex flex-col ml-3">
+                                            <div class="font-medium leading-none">
+                                                Desea eliminar este registro ?
+                                            </div>
+                                            <p class="text-sm text-gray-600 leading-none mt-1">Este proceso no es reversible esta seguro?</p>
+                                        </div>
+                                    </div>
+                                    <button @click="confirmar" class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">SI</button>
+                                    <button @click="confirmarNo" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- eliminar -->                
+
                 </div>
             </div>
         </div>
@@ -263,7 +290,8 @@ export default defineComponent(
                 this.tpAccion=-1;
                 this.titulo = "Ver Usuario"
             },
-            limpiar(){
+            limpiar()
+            {
                 this.idUsuario="";
                 this.idTipoDoc="";
                 this.numdoc="";
@@ -308,71 +336,78 @@ export default defineComponent(
             {
                 this.modal = false;
             },
-        update()
+            actualizar(data=[])
+            {
+                this.idUsuario=data['id'];
+                this.idTipoDoc=data['idDoc'];
+                this.numdoc=data['doc_num'];
+                this.nombres=data['names'];
+                this.apellidos=data['surnames'];                
+                this.telefono=data['phone'];
+                this.email=data['email'];
+                this.direccion=data['address'];
+                this.idTipoUsuario=data['idUser'];
+                this.modal = true;
+                this.tpAccion=1;
+                this.titulo = "Actualizar Registro";
+            },
+            update()
+            {
+                let me=this;
+                var url="/api/user/actualizar";
+                axios.put(url, {
+                    id:this.idUsuario,
+                    doc_type:this.idTipoDoc,
+                    doc_num:this.numdoc,
+                    names:this.nombres,
+                    surnames:this.apellidos,
+                    phone:this.telefono,
+                    address:this.direccion,
+                    email:this.email,
+                    id_type_user:this.idTipoUsuario
+                })
+                .then(function(response) {
+                    me.listarDatos();     
+                    me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success'); 
+                })
+                .catch(function(error) {
+                    me.mensaje('Error al actualizar!!',error.message,'success');
+                });
+            }, 
+            eliminar(data=[]){
+                this.idUsuario=data['id'];
+                this.tpAccion=2;
+            },
+            confirmar()
+            {
+                this.delete();
+                this.tpAccion=0;
+            },
+            confirmarNO()
+            {
+                this.tpAccion=0;
+            },
+            delete()
+            {
+                let me=this;
+                var url="/api/user/eliminar" ;
+                axios.post(url,{
+                    id:this.idUsuario
+                })
+                .then(function(response) {
+                    me.listarDatos();
+                    me.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');       
+                })
+                .catch(function(error) {
+                    me.mensaje('Error al eliminar!!',error.message,'success');
+                })
+            },
+        },
+        mounted()
         {
-            let me=this;
-            var url="/api/calendar/actualizar";
-            axios.put(url, {
-                id:this.idCalendar,
-                schedule:this.nombre.toUpperCase(),
-                state:this.edo
-            })
-            .then(function(response) {
-                me.listarDatos();     
-                me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success'); 
-            })
-            .catch(function(error) {
-                me.mensaje('Error al actualizar!!',error.message,'success');
-            });
-        }, 
-        actualizar(data=[])
-        {
-            this.idCalendar=data['id'];
-            this.nombre=data['schedule'];
-            this.edo=data['state'];
-            this.modal = true;
-            this.tpAccion=1;
-            this.titulo = "Actualizar Registro"
-        },
-        delete(){
-            let me=this;
-            var url="/api/calendar/eliminar" ;
-            axios.post(url,{
-                id:this.idCalendar
-            })
-            .then(function(response) {
-                me.listarDatos();
-                me.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');       
-            })
-            .catch(function(error) {
-                me.mensaje('Error al eliminar!!',error.message,'success');
-            })
-        },
-        eliminar(data=[]){
-            this.idCalendar=data['id'];
-            this.tpAccion=2;
-        },
-        confirmar(){
-            this.delete();
-            this.tpAccion=0;
-        },
-        confirmarNO(){
-            this.tpAccion=0;
-        },
-        mensaje(head, body, button){
-            Swal.fire(
-                head,
-                body,
-                button
-            )            
+            this.listarDatos();
+            this.listarTipoDoc();
+            this.listarTipoUsuario();
         }
-    },
-    mounted(){
-        this.listarDatos();
-        this.listarTipoDoc();
-        this.listarTipoUsuario();
-    },
-        props: ["calendar"],
-    },
-);
+    });
 </script>

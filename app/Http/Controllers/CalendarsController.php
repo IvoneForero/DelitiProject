@@ -25,13 +25,7 @@ class CalendarsController extends Controller
 
     public function getData(Request $request)
     {
-        $buscar=$request->idBuscar;
-
-        if ($buscar=='') {
-            $calendar = calendars::select('schedule')->get();
-        }else{
-            $calendar = calendars::select('schedule')->where('id','=',$buscar)->get();
-        }
+        $calendar = calendars::select('id','schedule')->get();
         return ['calendar'=>$calendar];
     }
 

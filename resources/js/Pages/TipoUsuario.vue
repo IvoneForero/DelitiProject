@@ -8,7 +8,7 @@
         <!-- component -->
         <div class="overflow-x-auto">
             <div class="min-w-screen min-h-screen bg-red-50 flex justify-center bg-red-50 font-sans overflow-hidden">
-                <div class="w-full lg:w-5/6">
+                <div class="w-full lg:w-3/6">
                     <div class="bg-white shadow-md rounded my-6" v-if="modal==false">
                         <table class="min-w-max w-full table-auto">
                             <thead>
@@ -47,13 +47,13 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="bg-red-50 overflow-hidden shadow-x2 sm:rounded-lg">
+                        <div class="bg-pink-100 overflow-hidden shadow-x2">
                             <button
                                 @click="abrirModal"
                                 type="button"
                                 class="border border-pink-600 bg-pink-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-pink-500 focus:outline-none focus:shadow-outline"
                             >
-                                Nuevo
+                                Nuevo tipo usuario
                             </button>
                         </div>
                     </div>
@@ -61,13 +61,13 @@
                     <div class="flex justify items-top bg-red-50 antialiased" v-if="modal==true">
                         <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
                             <div
-                            class="flex flex-row justify-between p-6 bg-pink-100 border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
+                            class="flex flex-row justify-between p-6 bg-pink-200 border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
                             >
-                                <p class="font-semibold text-gray-800">{{titulo}}</p>
+                                <p class="font-semibold text-pink-900">{{titulo}}</p>
 
                                 <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-red-500 uppercase  rounded">X</button>
                             </div>
-                            <div class="flex flex-col px-6 py-5 bg-gray-50">
+                            <div class="flex flex-col px-6 py-5 bg-pink-50">
                                 <div class="mb-3 space-y-2 w-full">
                                     <label class="text-pink-700 select-none font-medium">Tipo Usuario</label>
                                     <input v-model="nombre" placeholder="Ingrese tipo usuario" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
