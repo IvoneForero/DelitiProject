@@ -21,11 +21,9 @@ class OrdersController extends Controller
 
     public function index2(Request $request)
     {
-        $reg = orders::get();
-//        $reg = orders::join('doc_types','app_users.doc_type','doc_types.id')
-//        ->join('type_users','app_users.id_type_user','type_users.id')
-//        ->select('app_users.id', 'doc_types.id as idDoc', 'doc_types.doc_type as type','app_users.doc_num','app_users.names','app_users.surnames','app_users.phone','app_users.address','app_users.email', 'type_users.id as idUser', 'type_users.name as tip_user')
-//        ->get();
+        $reg = orders::join('app_users','orders.id_client','app_users.id')
+        ->select('orders.id', 'order_date', 'orders.id_client as id_client', 'app_users.doc_type as type_doc','app_users.doc_num as doc_num','app_users.names','app_users.surnames','deliv_adrress','delivery_date','id_calendar','receive_phone','receive_name','total','paid', 'orders.state', 'message')
+        ->get();
         return ['orders'=>$reg];
     }    
 

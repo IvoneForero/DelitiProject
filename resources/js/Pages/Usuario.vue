@@ -182,7 +182,7 @@
                                         </div>
                                     </div>
                                     <button @click="confirmar" class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">SI</button>
-                                    <button @click="confirmarNo" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
+                                    <button @click="confirmarNO" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
                                 </div>
                             </div>
                         </div>
@@ -195,12 +195,23 @@
     </app-layout>
 </template>
 
-
 <script>
    
     import { defineComponent } from "vue";
     import AppLayout from '@/Layouts/AppLayout.vue';
     import Welcome from '@/Jetstream/Welcome.vue';
+
+	function setup() {
+    return {
+      activeTab: 0,
+      tabs: [
+          "Tab No.1",
+          "Tab No.2",
+          "Tab No.3",
+          "Tab No.4",
+      ]
+    };
+  };
 
 export default defineComponent(
     {
@@ -280,8 +291,8 @@ export default defineComponent(
                 this.idUsuario=data['id'];
                 this.idTipoDoc=data['idDoc'];
                 this.numdoc=data['doc_num'];
-                this.nombres=data['names'];                
-                this.apellidos=data['surnames'];                
+                this.nombres=data['names'];
+                this.apellidos=data['surnames'];
                 this.telefono=data['phone'];
                 this.email=data['email'];
                 this.direccion=data['address'];
@@ -295,8 +306,8 @@ export default defineComponent(
                 this.idUsuario="";
                 this.idTipoDoc="";
                 this.numdoc="";
-                this.nombres="";                
-                this.apellidos="";                
+                this.nombres="";
+                this.apellidos="";
                 this.telefono="";
                 this.email="";
                 this.direccion="";
@@ -342,7 +353,7 @@ export default defineComponent(
                 this.idTipoDoc=data['idDoc'];
                 this.numdoc=data['doc_num'];
                 this.nombres=data['names'];
-                this.apellidos=data['surnames'];                
+                this.apellidos=data['surnames'];
                 this.telefono=data['phone'];
                 this.email=data['email'];
                 this.direccion=data['address'];

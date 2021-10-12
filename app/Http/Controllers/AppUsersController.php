@@ -29,14 +29,19 @@ class AppUsersController extends Controller
     
     public function getData(Request $request)
     {
-        $buscar=$request->idBuscar;
+        $idBuscar=$request->tipoBuscar;
+        $numBuscar=$request->numBuscar;
 
-        if ($buscar=='') {
-            $reg = app_users::select('names')->get();
+        if ($idBuscar=='') 
+        {
+            $reg = app_users::select('id','doc_type','doc_num','names', 'surnames',  'phone', 'address', 'email','id_type_user')->get();
         }else{
-            $reg = app_users::select('names')->where('id','=',$buscar)->get();
+            $reg = app_users::select('id','doc_type','doc_num','names', 'surnames',  'phone', 'address', 'email')
+//            ->where('id', $idBuscar)
+            ->where([['doc_type', $idBuscar],['doc_num', $numBuscar]])
+            ->get();
         }
-        return ['consulta'=>$reg];
+        return ['usuarios'=>$reg];
     }
 
     public function store(Request $request)

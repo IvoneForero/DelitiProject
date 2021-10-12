@@ -16,7 +16,7 @@
                                     <th class="py-3 px-6 text-left">Descripción</th>
                                     <th class="py-3 px-6 text-left">Categoría</th>
                                     <th class="py-3 px-6 text-left">Valor</th>
-                                    <th class="py-3 px-6 text-left">Estado</th>                                    
+                                    <th class="py-3 px-6 text-left">Estado</th>
                                     <th class="py-3 px-6 text-left">Acción</th>
                                 </tr>
                             </thead>
@@ -79,16 +79,13 @@
                             >
                                 Nuevo Producto
                             </button>
-                        </div>        
+                        </div>
                     </div>
                     <!-- Modal -->
-                    <div class="flex justify items-top bg-red-50 antialiased" v-if="modal==true">
+                    <div class="flex justify items-top bg-red-50 antialiased" v-if="modal==true">                
                         <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
-                            <div
-                            class="flex flex-row justify-between p-6 bg-pink-200 border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
-                            >
+                            <div class="flex flex-row justify-between p-6 bg-pink-200 border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
                                 <p class="font-semibold text-pink-900">{{titulo}}</p>
-
                                 <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-pink-800 uppercase  rounded">X</button>
                             </div>
                             <div class="flex flex-col px-6 py-5 bg-pink-50">
@@ -101,11 +98,11 @@
                                     <label class="text-pink-700 select-none font-medium">Descripción</label>
                                     <textarea v-model="desc" p-5 mb-5 placeholder="Ingrese descripción del Producto" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
                                     </textarea>
-                                </div>                                
+                                </div>
                                 <label for="default" class="text-pink-700 select-none font-medium">Categoría</label>
                                 <select v-model="idCategoria" class="border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
                                     <option v-for="item in arrayCategoria" :key="item.id" :value="item.id">{{ item.name }}</option>
-                                </select>                            
+                                </select>
                                 <div class="mb-3 space-y-2 w-full">
                                     <label class="text-pink-700 select-none font-medium">Precio</label>
                                     <input v-model="Precio" placeholder="Ingrese Precio por Unidad" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
@@ -116,6 +113,11 @@
                                     <input v-model="Ruta" placeholder="Ingrese ruta imagen" class="appearance-none block w-full bg-grey-lighter text-grey-darker border border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10" required="required" type="text" name="integration[shop_name]" id="integration_shop_name">
                                     <p class="text-red text-xs hidden">Please fill out this field.</p>
                                 </div>
+                                <label for="default" class="text-gray-700 select-none font-medium">Seleccione un estado</label>
+                                <select v-model="edo" class="border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                                    <option value="0">Disponible</option>
+                                    <option value="1">NO Disponible</option>
+                                </select>
                             </div>
                             <div
                             class="flex flex-row items-center justify-between p-5 text-gray-600 border-t border-gray-200 rounded-bl-lg rounded-br-lg"
@@ -132,7 +134,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Modal -->    
+                    <!-- Modal -->
                     <!-- eliminar -->
                     <div v-if="tpAccion==2">
                         <div class="bg-opacity-25 flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-gray-600">
@@ -152,13 +154,12 @@
                                         </div>
                                     </div>
                                     <button @click="confirmar" class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">SI</button>
-                                    <button @click="confirmarNo" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
+                                    <button @click="confirmarNO" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- eliminar -->                    
-
+                    <!-- eliminar -->
                 </div>
             </div>
         </div>
@@ -169,190 +170,213 @@
     import { defineComponent } from 'vue'
     import AppLayout from '@/Layouts/AppLayout.vue'
 
-    export default defineComponent({
-        components: {
-            AppLayout
-        },
-        data() 
+	function setup() {
+    return {
+      activeTab: 0,
+      tabs: [
+          "Cliente",
+          "Productos",
+          "Entrega",
+      ]
+        };
+    };
+    export default defineComponent
+    (
         {
-            return{
-                modal: false,
-                titulo : "",
-                tpAccion: 1,//1 guardar 0 actualizar
-                nombre:"",
-                desc:"",
-                edo:"0",
-                Precio:0,
-                Ruta:"",
-                idProducto:"",
-                idCategoria:"",
-                arrayDatos:[],
-                arrayCategoria:[]
-            };
-        },
-        methods:
-        {
-            limpiar(){
-                this.nombre="";
-                this.desc="";
-                this.edo="0";
-                this.Precio=0;
-                this.Ruta="";
-                this.idProducto="";
-                this.idCategoria="";
-            },
-            nuevo()
+            components: 
             {
-                this.titulo = "Nuevo Registro";
-                this.modal = true;
+                AppLayout
             },
-            listarCategoria(){
-                let me=this;
-                var url="/api/categoria/getdata";
+            data() 
+            {
+                return{
+                    activeTab: 0,
+                    tabs: ["Cliente","Productos","Entrega"],
+                    modal: false,
+                    titulo : "",
+                    tpAccion: 1,//1 guardar 0 actualizar
+                    nombre:"",
+                    desc:"",
+                    edo:"0",
+                    Precio:0,
+                    Ruta:"",
+                    idProducto:"",
+                    idCategoria:"",
+                    arrayDatos:[],
+                    arrayCategoria:[]
+                };
+            },
+            methods:
+            {
+                limpiar(){
+                    this.nombre="";
+                    this.desc="";
+                    this.edo="0";
+                    this.Precio=0;
+                    this.Ruta="";
+                    this.idProducto="";
+                    this.idCategoria="";
+                },
+                nuevo()
+                {
+                    this.titulo = "Nuevo Registro";
+                    this.modal = true;
+                },
+                listarCategoria(){
+                    let me=this;
+                    var url="/api/categoria/getdata";
 
-                axios.get(url)
-                .then(function(response){
-                    var respuesta=response.data;
-                    me.arrayCategoria=respuesta.catprod;
-                })
-                .catch(function(error){
-                })
-            },
-            listarDatos(){
-                let me=this;
-                var url="/api/producto/index2";
+                    axios.get(url)
+                    .then(function(response){
+                        var respuesta=response.data;
+                        me.arrayCategoria=respuesta.catprod;
+                    })
+                    .catch(function(error){
+                    })
+                },
+                listarDatos()
+                {
+                    let me=this;
+                    var url="/api/producto/index2";
 
-                axios.get(url)
-                .then(function(response){
-                    var respuesta=response.data;
-                    me.arrayDatos=respuesta.consulta;
-                })
-                .catch(function(error){
-                })
-            },                        
-            abrirModal(){
-                let me=this;
-                this.titulo = "Nuevo Registro"
-                this.modal = true;
-                me.limpiar();
-                this.tpAccion=0;
-                this.nombre="";
-            },  
-            ver(data=[])
-            {
-                this.idProducto=data['id'];
-                this.nombre=data['product'];
-                this.desc=data['description'];
-                this.edo=data['state'];
-                this.Precio=data['price'];
-                this.Ruta=data['picture'];
-                this.idCategoria=data['id_category'];
-                this.modal=true;
-                this.tpAccion=-1;
-                this.titulo = "Ver Registro"
-            },
-            update()
-            {
-                let me=this;
-                var url="/api/producto/actualizar";
-                axios.put(url, {
-                    id:this.idProducto,
-                    name:this.nombre,
-                    description:this.desc,
-                    id_prod_category:this.idCategoria,
-                    price:this.Precio,
-                    state:this.edo,
-                    picture:this.Ruta
-                })
-                .then(function(response) {
-                    me.listarDatos();     
-                    me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success'); 
-                })
-                .catch(function(error) {
-                    me.mensaje('Error al guardar!!',error.message,'success');
-                });
-            }, 
-            actualizar(data=[])
-            {
-                this.idProducto = data['id'];
-                this.nombre=data['product'];
-                this.desc=data['description'];                
-                this.edo=data['state'];
-                this.idCategoria=data['id_category'];
-                this.Precio=data['price'];
-                this.Ruta=data['picture']
-                this.modal = true;
-                this.tpAccion=1;
-                this.titulo = "Actualizar Registro"
-            },            
-            registrar(){     
-                let me=this;
-                var url="/api/producto/registrar";
-                axios.post(url, 
+                    axios.get(url)
+                    .then(function(response){
+                        var respuesta=response.data;
+                        me.arrayDatos=respuesta.consulta;
+                    })
+                    .catch(function(error){
+                    })
+                },
+                abrirModal()
                 {
-                    name:this.nombre,
-                    description:this.desc,
-                    id_prod_category:this.idCategoria,
-                    price:this.Precio,
-                    state:this.edo,
-                    picture:this.Ruta
-                })
-                .then(function(response)
+                    let me=this;
+                    this.titulo = "Nuevo Registro"
+                    this.modal = true;
+                    me.limpiar();
+                    this.tpAccion=0;
+                    this.nombre="";
+                },  
+                ver(data=[])
                 {
-                    me.listarDatos();
-                    me.cerrarModal();
-                    me.mensaje('Registro creado!!','El registro se creo correctamente.','success');
-                    //alert("Se registro correctamente");
-                })
-                .catch(function(error) 
+                    this.idProducto=data['id'];
+                    this.nombre=data['product'];
+                    this.desc=data['description'];
+                    this.edo=data['state'];
+                    this.Precio=data['price'];
+                    this.Ruta=data['picture'];
+                    this.idCategoria=data['id_category'];
+                    this.modal=true;
+                    this.tpAccion=-1;
+                    this.titulo = "Ver Registro"
+                },
+                update()
                 {
-                    //me.mensaje('Error al crear Registro!!',error,'error');
-                    alert(error);
-                });
-            },            
-            delete(){
-                let me=this;
-                var url="/api/producto/eliminar";
-                axios.post(url,{
-                    id:this.idProducto
-                })
-                .then(function(response) {
+                    let me=this;
+                    var url="/api/producto/actualizar";
+                    axios.put(url, {
+                        id:this.idProducto,
+                        name:this.nombre,
+                        description:this.desc,
+                        id_prod_category:this.idCategoria,
+                        price:this.Precio,
+                        state:this.edo,
+                        picture:this.Ruta
+                    })
+                    .then(function(response) {
+                        me.listarDatos();     
+                        me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success'); 
+                    })
+                    .catch(function(error) {
+                        me.mensaje('Error al guardar!!',error.message,'success');
+                    });
+                }, 
+                actualizar(data=[])
+                {
+                    this.idProducto = data['id'];
+                    this.nombre=data['product'];
+                    this.desc=data['description'];
+                    this.edo=data['state'];
+                    this.idCategoria=data['id_category'];
+                    this.Precio=data['price'];
+                    this.Ruta=data['picture']
+                    this.modal = true;
+                    this.tpAccion=1;
+                    this.titulo = "Actualizar Registro"
+                },            
+                registrar()
+                {     
+                    let me=this;
+                    var url="/api/producto/registrar";
+                    axios.post(url, 
+                    {
+                        name:this.nombre,
+                        description:this.desc,
+                        id_prod_category:this.idCategoria,
+                        price:this.Precio,
+                        state:this.edo,
+                        picture:this.Ruta
+                    })
+                    .then(function(response)
+                    {
+                        me.listarDatos();
+                        me.cerrarModal();
+                        me.mensaje('Registro creado!!','El registro se creo correctamente.','success');
+                        //alert("Se registro correctamente");
+                    })
+                    .catch(function(error) 
+                    {
+                        //me.mensaje('Error al crear Registro!!',error,'error');
+                        alert(error);
+                    });
+                },            
+                delete()
+                {
+                    let me=this;
+                    var url="/api/producto/eliminar";
+                    axios.post(url,{
+                        id:this.idProducto
+                    })
+                    .then(function(response) {
                     me.listarDatos();
                     me.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');       
-                })
-                .catch(function(error) {
-                    alert(error);
-                })
+                    })
+                    .catch(function(error) 
+                    {
+                        alert(error);
+                    })
+                },
+                eliminar(data=[])
+                {
+                    this.idProducto = data['id'];
+                    this.tpAccion=2;
+                },
+                cerrarModal()
+                {
+                    this.modal = false;
+                },
+                confirmar()
+                {
+                    this.delete();
+                    this.tpAccion=0;
+                },
+                confirmarNO()
+                {
+                    this.tpAccion=0;
+                },
+                mensaje(head, body, button)
+                {
+                    Swal.fire(
+                        head,
+                        body,
+                        button
+                    )            
+                }            
             },
-            eliminar(data=[]){
-                this.idProducto = data['id'];
-                this.tpAccion=2;
-            },
-            cerrarModal()
+            mounted()
             {
-                this.modal = false;
-            },
-            confirmar(){
-                this.delete();
-                this.tpAccion=0;
-            },
-            confirmarNO(){
-                this.tpAccion=0;
-            },
-            mensaje(head, body, button)
-            {
-                Swal.fire(
-                    head,
-                    body,
-                    button
-                )            
-            }            
-        },
-        mounted()
-        {
-            this.listarDatos();
-            this.listarCategoria();
-
+                this.listarDatos();
+                this.listarCategoria();
+            }
         }
-    })
+    )
 </script>

@@ -10,6 +10,8 @@ use App\Http\Controllers\DocTypesController;
 use App\Http\Controllers\TypeUsersController;
 use App\Http\Controllers\AppUsersController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\OrdDetailsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +48,6 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/api/categoria/registrar'
 Route::middleware(['auth:sanctum', 'verified'])->put('/api/categoria/actualizar',[CategoryProdsController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/categoria/eliminar',[CategoryProdsController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/api/categoria/getdata',[CategoryProdsController::class, 'getdata']);
-Route::put('/api/catprod/update', [CategoryProdsController::class, 'update']);
 
 //Rutas Productos
 Route::middleware(['auth:sanctum', 'verified'])->get('/producto',[ProductsController::class, 'index'])->name('producto');
@@ -55,7 +56,6 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/api/producto/registrar',
 Route::middleware(['auth:sanctum', 'verified'])->put('/api/producto/actualizar',[ProductsController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/api/producto/eliminar',[ProductsController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/api/producto/getdata',[ProductsController::class, 'getdata']);
-Route::post('/api/product/store', [ProductsController::class, 'store']);
 
 //Rutas Tipo Documentos
 Route::middleware(['auth:sanctum', 'verified'])->get('/tipodoc',[DocTypesController::class, 'index'])->name('tipodoc');
@@ -84,6 +84,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/api/user/getdata',[AppUse
 //Rutas Pedidos
 Route::middleware(['auth:sanctum', 'verified'])->get('/order',[OrdersController::class, 'index'])->name('order');
 Route::middleware(['auth:sanctum', 'verified'])->get('/api/order/index2',[OrdersController::class, 'index2']);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/detalle/index2',[OrdDetailsController::class, 'index2']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/api/detalle/getdata',[OrdDetailsController::class, 'getdata']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');

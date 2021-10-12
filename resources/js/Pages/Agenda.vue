@@ -60,7 +60,7 @@
                             </button>
                         </div>
                     </div>
-                    <!-- component modal -->
+                    <!-- Modal Datos-->
                     <div class="flex justify-center items-top bg-red-50 antialiased" v-if="modal==true">
                         <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
                             <div class="flex flex-row justify-between p-6 bg-pink-200 border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
@@ -91,8 +91,9 @@
                                 </button>
                             </div>
                         </div>
-                    </div>                   
-                    <!-- eliminar -->
+                    </div>
+                    <!-- Fin Modal Datos-->
+                    <!-- Modal Eliminar -->
                     <div v-if="tpAccion==2">
                         <div class="bg-opacity-25 flex flex-col space-y-4 min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-gray-600">
                             <div class="flex flex-col p-8 bg-white shadow-md hover:shodow-lg rounded-2xl">
@@ -107,16 +108,16 @@
                                             <div class="font-medium leading-none">
                                                 Desea eliminar este registro ?
                                             </div>
-                                            <p class="text-sm text-gray-600 leading-none mt-1">Este proceso no es reversible esta seguro?</p>
+                                            <p class="text-sm text-gray-600 leading-none mt-1">Este proceso no es reversible, esta seguro?</p>
                                         </div>
                                     </div>
                                     <button @click="confirmar" class="flex-no-shrink bg-red-500 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-500 text-white rounded-full">SI</button>
-                                    <button @click="confirmarNo" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
+                                    <button @click="confirmarNO" class="flex-no-shrink bg-gray-800 px-5 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-gray-900 text-white rounded-full">NO</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- eliminar -->                    
+                    <!-- Fin Modal Eliminar -->                    
                 </div>
             </div>     
         </div>
@@ -124,168 +125,187 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import AppLayout from "@/Layouts/AppLayout.vue";
+    import { defineComponent } from "vue";
+    import AppLayout from "@/Layouts/AppLayout.vue";
 
-export default defineComponent({
-    components: {
-        AppLayout
-    },
-    data() 
-    {
-        return {
-            modal: false,
-            titulo:"",
-            tpAccion:1,//1 guardar 0 actualizar
-            nombre:"",
-            edo:"0",
-            idCalendar:"",
-            arrayDatos:[]
-        };
-    },
-    methods: {
-        limpiar(){
-            this.nombre="";
-            this.edo="0";            
-        },    
-        cerrarModal()
+    export default defineComponent
+    (
         {
-            this.modal = false;
-        },
-        registrar(){     
-            let me=this;
-            var url="/api/calendar/registrar";
-            axios.post(url, 
+            components:
             {
-                schedule:this.nombre.toUpperCase(),
-                state:this.edo
-            })
-            .then(function(response)
+                AppLayout
+            },
+            data() 
             {
-                me.listarDatos();
-                me.limpiar();
-                me.cerrarModal();
-                me.mensaje('Registro creado!!','El registro se creo correctamente.','success');
-            })
-            .catch(function(error) 
-            {
-               me.mensaje('Error al crear Registro!!',error.message,'error');
-            });
-        },
-        abrirModal(){
-            this.titulo = "Nuevo Registro"
-            this.modal = true;
-            this.tpAccion=0;
-            this.nombre="";
-        },
-        update()
-        {
-            let me=this;
-            var url="/api/calendar/actualizar";
-            axios.put(url, {
-                id:this.idCalendar,
-                schedule:this.nombre.toUpperCase(),
-                state:this.edo
-            })
-            .then(function(response) {
-                me.listarDatos();     
-                me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success'); 
-            })
-            .catch(function(error) {
-                me.mensaje('Error al actualizar!!',error.message,'success');
-            });
-        }, 
-        actualizar(data=[])
-        {
-            this.idCalendar=data['id'];
-            this.nombre=data['schedule'];
-            this.edo=data['state'];
-            this.modal = true;
-            this.tpAccion=1;
-            this.titulo = "Actualizar Registro"
-        },
-        delete(){
-            let me=this;
-            var url="/api/calendar/eliminar" ;
-            axios.post(url,{
-                id:this.idCalendar
-            })
-            .then(function(response) {
-                me.listarDatos();
-                me.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');       
-            })
-            .catch(function(error) {
-                me.mensaje('Error al eliminar!!',error.message,'success');
-            })
-        },
-        eliminar(data=[]){
-            this.idCalendar=data['id'];
-            this.tpAccion=2;
-        },
-        listarDatos(){
-            let me=this;
-            var url="/api/calendar/index2";
+                return {
+                    modal: false,
+                    titulo:"",
+                    tpAccion:1,//1 guardar 0 actualizar
+                    nombre:"",
+                    edo:"0",
+                    idCalendar:"",
+                    arrayDatos:[]
+                };
+            },
+            methods: {
+                limpiar()
+                {
+                    this.nombre="";
+                    this.edo="0";
+                },    
+                cerrarModal()
+                {
+                    this.modal = false;
+                },
+                registrar()
+                {     
+                    let me=this;
+                    var url="/api/calendar/registrar";
+                    axios.post(url, 
+                    {
+                        schedule:this.nombre.toUpperCase(),
+                        state:this.edo
+                    })
+                    .then(function(response)
+                    {
+                        me.listarDatos();
+                        me.limpiar();
+                        me.cerrarModal();
+                        me.mensaje('Registro creado!!','El registro se creo correctamente.','success');
+                    })
+                    .catch(function(error) 
+                    {
+                    me.mensaje('Error al crear Registro!!',error.message,'error');
+                    });
+                },
+                abrirModal()
+                {
+                    this.titulo = "Nuevo Registro"
+                    this.modal = true;
+                    this.tpAccion=0;
+                    this.nombre="";
+                },
+                update()
+                {
+                    let me=this;
+                    var url="/api/calendar/actualizar";
+                    axios.put(url, {
+                        id:this.idCalendar,
+                        schedule:this.nombre.toUpperCase(),
+                        state:this.edo
+                    })
+                    .then(function(response) {
+                        me.listarDatos();     
+                        me.mensaje('Registro actualizado!!','El registro se actualizo correctamente.','success'); 
+                    })
+                    .catch(function(error) {
+                        me.mensaje('Error al actualizar!!',error.message,'success');
+                    });
+                },
+                actualizar(data=[])
+                {
+                    this.idCalendar=data['id'];
+                    this.nombre=data['schedule'];
+                    this.edo=data['state'];
+                    this.modal = true;
+                    this.tpAccion=1;
+                    this.titulo = "Actualizar Registro"
+                },
+                delete()
+                {
+                    let me=this;
+                    var url="/api/calendar/eliminar" ;
+                    axios.post(url,{
+                        id:this.idCalendar
+                    })
+                    .then(function(response) {
+                        me.listarDatos();
+                        me.mensaje('Registro eliminado!!','El registro se elimino exitosamente.','success');
+                    })
+                    .catch(function(error) {
+                        me.mensaje('Error al eliminar!!',error.message,'success');
+                    })
+                },
+                eliminar(data=[])
+                {
+                    this.idCalendar=data['id'];
+                    this.tpAccion=2;
+                },
+                listarDatos()
+                {
+                    let me=this;
+                    var url="/api/calendar/index2";
 
-            axios.get(url)
-            .then(function(response){
-                var respuesta=response.data;
-                me.arrayDatos=respuesta.calendar;
-            })
-            .catch(function(error){
-            })
+                    axios.get(url)
+                    .then(function(response){
+                        var respuesta=response.data;
+                        me.arrayDatos=respuesta.calendar;
+                    })
+                    .catch(function(error){
+                    })
+                },
+                confirmar()
+                {
+                    this.delete();
+                    this.tpAccion=0;
+                },
+                confirmarNO()
+                {
+                    this.tpAccion=0;
+                },
+                ver(data=[])
+                {
+                    this.idCalendar=data['id'];
+                    this.nombre=data['schedule'];
+                    this.edo=data['state'];
+                    this.modal = true;
+                    this.tpAccion=-1;
+                    this.titulo = "Ver Registro"
+                },
+                mensaje(head, body, button)
+                {
+                    Swal.fire
+                    (
+                        head,
+                        body,
+                        button
+                    )            
+                }
+            },
+            mounted()
+            {
+                this.listarDatos();
+            },
         },
-        confirmar(){
-            this.delete();
-            this.tpAccion=0;
-        },
-        confirmarNO(){
-            this.tpAccion=0;
-        },
-        ver(data=[]){
-            this.idCalendar=data['id'];
-            this.nombre=data['schedule'];
-            this.edo=data['state'];
-            this.modal = true;
-            this.tpAccion=-1;
-            this.titulo = "Ver Registro"
-        },
-        mensaje(head, body, button){
-            Swal.fire(
-                head,
-                body,
-                button
-            )            
-        }
-    },
-    mounted(){
-        this.listarDatos();
-    },
-        props: ["calendar"],
-    },
-);
-
+    );
 </script>
+
 <style>
 
-.table {
-  border-spacing: 0 15px;
-}
+    .table
+    {
+        border-spacing: 0 15px;
+    }
 
-i {
-  font-size: 1rem !important;
-}
+    i
+    {
+        font-size: 1rem !important;
+    }
 
-.table tr {
-  border-radius: 20px;
-}
+    .table tr
+    {
+        border-radius: 20px;
+    }
 
-tr td:nth-child(n + 5),
-tr th:nth-child(n + 5) {
-  border-radius: 0 0.625rem 0.625rem 0;
-}
+    tr td:nth-child(n + 5),
+    tr th:nth-child(n + 5)
+    {
+        border-radius: 0 0.625rem 0.625rem 0;
+    }
 
-tr td:nth-child(1),
-tr th:nth-child(1) {
-  border-radius: 0.625rem 0 0 0.625rem;
-}
+    tr td:nth-child(1),
+    tr th:nth-child(1)
+    {
+        border-radius: 0.625rem 0 0 0.625rem;
+    }
 </style>
