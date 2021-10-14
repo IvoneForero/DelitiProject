@@ -1,68 +1,147 @@
 <template>
-    <div>
-        <div class="p-6 sm:px-20 bg-ping-100 border-b border-gray-200">
+    <div class="bg-pink-50">
+        <div class="p-6 sm:px-20 bg-pink-50 border-b border-pink-50">
             <div>
                 <jet-application-logo class="block h-12 w-auto" />
             </div>
 
-            <div class="mt-8 text-pink-600 text-2xl">
-                Bienvenido a Deliti Reposteria Artesanal
-            </div>
-
-            <div class="mt-6 text-gray-500">
+            <div class="mt-8 text-center font-semibold text-pink-800 text-3xl">
+                ¡Te acompañamos en tus eventos!
             </div>
         </div>
 
-        <div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-            <div class="p-6">
-                <div class="flex items-center">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                    <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a>Documentation</a></div>
+        <div class="container my-12 mx-auto px-4 md:px-12 bg-pink-50">
+            <div class="flex flex-wrap -mx-1 lg:-mx-4">
+                <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+                    <article class="overflow-hidden rounded-lg shadow-lg bg-pink-502">
+                        <a>
+                            <img alt="Placeholder" class="block h-auto w-full" src="/images/TortChocolate.jpg">
+                        </a>
+                        <header class="flex items-center  justify-between leading-tight p-2 md:p-4">
+                            <div>
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700">
+                                        Torta de chocolate 
+                                    </a>
+                                </h1>
+                                <h3>
+                                    <a>
+                                        Deliciosa y esponjosa torta de chocolate rellena, cubierta y decorada con mucho chocolate. Lleva en su decoración nuestras paletas de torta y mucho sabor.                                
+                                    </a>
+                                </h3>
+                            </div>
+                        </header>
+                    </article>
+                </div>
+        
+                <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+                    <article class="overflow-hidden rounded-lg shadow-lg">
+                        <a>
+                            <img alt="Placeholder" class="block h-auto w-full" src="/images/PaletasDeTorta.jpg">
+                        </a>
+                        <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                            <div>
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700">
+                                        Paletas de Torta
+                                    </a>
+                                </h1>
+                                <h3>
+                                    <a>
+                                        Deliciosas paletas de torta cubiertas de chocolate con deliciosos rellenos como mora, arequipe, nutela, chocolate, etc. Perfectas para esos momentos especiales.                              
+                                    </a>
+                                </h3>
+                            </div>
+                        </header>
+                    </article>
+                </div>
+            
+                <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+                    <article class="overflow-hidden rounded-lg shadow-lg">
+                        <a>
+                            <img alt="Placeholder" class="block h-auto w-full" src="/images/CoronaVirus.jpg">
+                        </a>
+                        <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                            <div>
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700">
+                                        Tortas personalizadas
+                                    </a>
+                                </h1>
+                                <h3>
+                                    <a>
+                                        Personalizamos tus tortas, hacemos tu sueño realidad con impresiones comestibles, con figuras y cubiertas en fondant para compartir con los tuyos.                             
+                                    </a>
+                                </h3>
+                            </div>
+                        </header>
+                    </article>
+                </div>
+            
+                <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+                    <article class="overflow-hidden rounded-lg shadow-lg">
+                        <a>
+                            <img alt="Placeholder" class="block h-auto w-full" src="/images/CupcakesVino.jpeg">
+                        </a>
+                        <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                            <div>
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700">
+                                        Cupcakes Personalizados
+                                    </a>
+                                </h1>
+                                <h3>
+                                    <a>
+                                        Mini ponquesitos decorados y persona- lizados, con dulces y ricos rellenos como frutos rojos, arequipe, mora, y chocolate para endulzar esa persona especial.                              
+                                    </a>
+                                </h3>
+                            </div>
+                        </header>
+                    </article>
                 </div>
 
-                <div class="ml-12">
-                    <div class="mt-2 text-sm text-gray-500">
-                        Aquí.
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
-                <div class="flex items-center">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                    <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a>Laracasts</a></div>
-                </div>
-
-                <div class="ml-12">
-                    <div class="mt-2 text-sm text-gray-500">
-                        Aquí.
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-6 border-t border-gray-200">
-                <div class="flex items-center">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a>Tailwind</a></div>
+                <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+                    <article class="overflow-hidden rounded-lg shadow-lg">
+                        <a>
+                            <img alt="Placeholder" class="block h-auto w-full" src="/images/Popcakes.jpeg">
+                        </a>
+                        <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                            <div>
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700">
+                                        Popcakes
+                                    </a>
+                                </h1>
+                                <h3>
+                                    <a>
+                                        Ricas bolitas de torta decoradas con chocolate para tus eventos como cumpleaños y Baby Showers, especiales para decorar tus mesas dulces.                             
+                                    </a>
+                                </h3>
+                            </div>
+                        </header>
+                    </article>
                 </div>
 
-                <div class="ml-12">
-                    <div class="mt-2 text-sm text-gray-500">
-                        Aquí.
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-6 border-t border-gray-200 md:border-l">
-                <div class="flex items-center">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Authentication</div>
-                </div>
-
-                <div class="ml-12">
-                    <div class="mt-2 text-sm text-gray-500">
-                        Aquí.
-                    </div>
+                <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+                    <article class="overflow-hidden rounded-lg shadow-lg">
+                        <a>
+                            <img alt="Placeholder" class="block h-auto w-full" src="/images/NavidadCorporativo.jpeg">
+                        </a>
+                        <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                            <div>
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700">
+                                        Corporativo
+                                    </a>
+                                </h1>
+                                <h3>
+                                    <a>
+                                        Tenemos esos detalles que buscas para obsequiar a tus empleados y así promover su productividad y mejorar el ambiente laboral.                               
+                                    </a>
+                                </h3>
+                            </div>
+                        </header>
+                    </article>
                 </div>
             </div>
         </div>

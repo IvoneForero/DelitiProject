@@ -37,10 +37,10 @@
                                         </div>
                                     </td>                                    
                                     <td v-if="object.state==0" class="py-3 px-6 text-left">
-                                        <span class="bg-yellow-500 text-yellow-50 py-1 px-3 rounded-full text-xs">Pendiente</span>
+                                        <span class="bg-red-400 text-red-50 py-1 px-3 rounded-full text-xs">Pendiente</span>
                                     </td>
                                     <td v-if="object.state==1" class="py-3 px-6 text-left">
-                                        <span class="bg-blue-500 text-blue-50 py-1 px-7 rounded-full text-xs">Listo</span>
+                                        <span class="bg-pink-600 text-pink-50 py-1 px-7 rounded-full text-xs">Listo</span>
                                     </td>
                                     <td v-if="object.state==2" class="py-3 px-6 text-left">
                                         <span class="bg-green-500 text-green-50 py-1 px-3 rounded-full text-xs">Entregado</span>
@@ -83,17 +83,17 @@
                         <div class="w-5/6 lg:w-5/6">
                             <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
                                 <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(1)" v-bind:class="{'text-pink-600 bg-white': openTab !== 1, 'text-white bg-pink-600': openTab === 1}">
+                                <a class="text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(1)" v-bind:class="{'text-pink-600 bg-white': openTab !== 1, 'text-white bg-pink-600': openTab === 1}">
                                     <i class="fas fa-space-shuttle text-base mr-1"></i>Cliente
                                 </a>
                                 </li>
                                 <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-pink-600 bg-white': openTab !== 2, 'text-white bg-pink-600': openTab === 2}">
+                                <a class="text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(2)" v-bind:class="{'text-pink-600 bg-white': openTab !== 2, 'text-white bg-pink-600': openTab === 2}">
                                     <i class="fas fa-cog text-base mr-1"></i>Productos
                                 </a>
                                 </li>
                                 <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(3)" v-bind:class="{'text-pink-600 bg-white': openTab !== 3, 'text-white bg-pink-600': openTab === 3}">
+                                <a class="text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" v-on:click="toggleTabs(3)" v-bind:class="{'text-pink-600 bg-white': openTab !== 3, 'text-white bg-pink-600': openTab === 3}">
                                     <i class="fas fa-briefcase text-base mr-1"></i>Entrega
                                 </a>
                                 </li>
@@ -114,7 +114,7 @@
                                                 </div>    
                                                 <div>
                                                     <label class="text-pink-800 dark:text-gray-200" for="username">Número Documento</label>
-                                                    <input v-model="numdoc" @keyup.enter="datosCliente" placeholder="Ingrese No. documento" id="numdoc" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                                    <input v-model="numdoc" @keyup.enter="datosCliente" placeholder="Ingrese su número de documento" id="numdoc" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                                 </div>                                    
                                                 <div>
                                                     <label class="text-pink-800 dark:text-gray-200" for="username">Nombres</label>
@@ -130,7 +130,7 @@
                                                 </div>
                                                 <div>
                                                     <label class="text-pink-800 dark:text-gray-200" for="emailAddress">Teléfono</label>
-                                                    <input v-model="telefono" placeholder="Ingrese No. tel" id="phone" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                                    <input v-model="telefono" placeholder="Ingrese su numero de teléfono" id="phone" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                                 </div>
                                             </div>
                                             <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1">                                            
@@ -163,16 +163,16 @@
                                                 </div>
                                                 <div>
                                                     <br/>
-                                                    <button title="Agregar Producto" @click="agregarDetalleProd" class="flex-no-shrink bg-pink-700 px-10 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-1 border-pink-800 text-white rounded-full">
+                                                    <button title="Agregar Producto" @click="agregarDetalleProd" class="flex-no-shrink bg-pink-600 px-10 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-1 border-pink-600 text-white rounded-full">
                                                         +
                                                     </button>
                                                 </div>
                                             </div>
                                             <br/>
                                             <div>
-                                                <table class="min-w-max w-full table-auto border-separate border border-pink-800">
+                                                <table class="min-w-max w-full table-auto border-separate border border-pink-600">
                                                     <thead>
-                                                        <tr class="bg-pink-200 text-pink-900 uppercase text-sm leading-normal">
+                                                        <tr class="bg-pink-100 text-pink-700 uppercase text-xs leading-normal">
                                                             <th class="py-3 px-6 text-center border border-pink-700">Producto</th>
                                                             <th class="py-3 px-6 text-center border border-pink-700">Cantidad</th>
                                                             <th class="py-3 px-6 text-center border border-pink-700">Valor Unitario</th>
@@ -180,7 +180,7 @@
                                                             <th class="py-3 px-6 text-center border border-pink-700">Acción</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody v-if="arrayDetallePedido.length" class="text-gray-600 text-sm font-light">
+                                                    <tbody v-if="arrayDetallePedido.length" class="text-gray-600 text-xs font-light">
                                                         <tr v-for="(detalle, index) in arrayDetallePedido" :key="detalle.id"  class="border-b border-blue-100 hover:bg-gray-100">                                        
                                                             <td class="py-3 px-6 text-left border border-pink-700">
                                                                 <div class="flex items-center">
@@ -210,9 +210,9 @@
                                                                 </div>
                                                             </td>                                                
                                                         </tr>
-                                                        <tr class="bg-pink-200 text-pink-900 border-b border-blue-100 hover:bg-pink-200">
+                                                        <tr class="bg-pink-100 text-pink-700 border-b border-blue-100 hover:bg-pink-200">
                                                             <td colspan="3" class="py-3 px-6 text-right border border-pink-700 font-bold" align="right">
-                                                                <h3>TOTAL</h3>
+                                                                <h3>TOTAL A PAGAR</h3>
                                                             </td>
                                                             <td class="py-3 px-6 text-left border border-pink-700 font-bold" align="right">
                                                                 <h3>{{sumar}}</h3>
@@ -267,18 +267,18 @@
                                     </div>
                                     <div class="flex gap-4 justify-center border-t p-4">
                                         <button
-                                            class="py-2 px-4 border rounded-md border-blue-600 text-blue-600 cursor-pointer uppercase text-sm font-bold hover:bg-blue-500 hover:text-white hover:shadow"
+                                            class="py-2 px-4 border rounded-md border-pink-600 text-pink-600 cursor-pointer uppercase text-sm font-bold hover:bg-pink-600 hover:text-white hover:shadow"
                                             @click="openTab--" v-if="openTab>1"
                                             >Atrás</button>
                                         <button
-                                            class="py-2 px-4 border rounded-md border-blue-600 text-blue-600 cursor-pointer uppercase text-sm font-bold hover:bg-blue-500 hover:text-white hover:shadow"
+                                            class="py-2 px-4 border rounded-md border-pink-600 text-pink-600 cursor-pointer uppercase text-sm font-bold hover:bg-pink-600 hover:text-white hover:shadow"
                                             @click="openTab++" v-if="openTab<3"
                                             >Siguiente</button>
                                     </div>
                                 </div>
                                 <div>
                                     <div class="flex flex-row items-center justify-between p-5 text-gray-600 border-t border-gray-200 rounded-bl-lg rounded-br-lg">
-                                        <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-purple-600 rounded">
+                                        <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-pink-600 rounded">
                                             Cancelar
                                         </button>
                                         <button v-if="tpAccion==0 && openTab==3" @click="registrar" class="px-4 py-2 text-white font-semibold bg-green-400 rounded">
@@ -334,6 +334,7 @@
                 valor:0,
                 cantidad:0,
                 fecha:"",
+                fecEntrega:"",
                 arrayDatos:[],
                 arrayDetalleProducto:[],
                 arrayDatosUsu:[],
@@ -383,6 +384,13 @@
             datosCliente()
             {
                 let me=this;
+                me.idCliente="";
+                me.nombres = "";
+                me.apellidos = "";
+                me.telefono = "";
+                me.direccion = "";
+                me.email = "";
+
                 var url="/api/user/getdata?tipoBuscar="+ this.idTipoDoc + "&numBuscar=" + this.numdoc;
 
                 axios.get(url)
@@ -399,7 +407,6 @@
                 .catch(function(error){
                 })
             },
-
             listarAgenda()
             {
                 let me=this;
@@ -426,13 +433,15 @@
                 .catch(function(error){
                 })
             },
-            abrirModal(){
+            abrirModal()
+            {
                 let me=this;
                 this.titulo = "Registrar Pedido"
                 this.modal = true;
                 me.limpiar();
                 this.tpAccion=0;
                 this.nombre="";
+                this.openTab=1;
             },
             limpiar()
             {
@@ -445,6 +454,16 @@
                 this.email="";
                 this.direccion="";
                 this.idPedido="";
+                this.arrayDetallePedido=[];
+                this.idProducto="";
+                this.cantidad="";
+                this.valor="";
+                this.fecEntrega="";
+                this.idAgenda="";
+                this.recibe="";
+                this.telefonoRecibe="";
+                this.direccionEntrega="";
+                this.mensaje="";
             },    
             cerrarModal()
             {
@@ -468,7 +487,8 @@
                 this.mensaje=data['message'];
                 this.modal = true;
                 this.tpAccion=-1;
-                this.titulo = "Ver Pedido Nro. " 
+                this.titulo = "Ver Pedido Nro. ";
+                this.openTab=1; 
             },
             getValorProducto()
             {

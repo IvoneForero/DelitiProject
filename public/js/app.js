@@ -20900,6 +20900,7 @@ __webpack_require__.r(__webpack_exports__);
       valor: 0,
       cantidad: 0,
       fecha: "",
+      fecEntrega: "",
       arrayDatos: [],
       arrayDetalleProducto: [],
       arrayDatosUsu: [],
@@ -20936,6 +20937,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     datosCliente: function datosCliente() {
       var me = this;
+      me.idCliente = "";
+      me.nombres = "";
+      me.apellidos = "";
+      me.telefono = "";
+      me.direccion = "";
+      me.email = "";
       var url = "/api/user/getdata?tipoBuscar=" + this.idTipoDoc + "&numBuscar=" + this.numdoc;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
@@ -20971,6 +20978,7 @@ __webpack_require__.r(__webpack_exports__);
       me.limpiar();
       this.tpAccion = 0;
       this.nombre = "";
+      this.openTab = 1;
     },
     limpiar: function limpiar() {
       this.idUsuario = "";
@@ -20982,6 +20990,16 @@ __webpack_require__.r(__webpack_exports__);
       this.email = "";
       this.direccion = "";
       this.idPedido = "";
+      this.arrayDetallePedido = [];
+      this.idProducto = "";
+      this.cantidad = "";
+      this.valor = "";
+      this.fecEntrega = "";
+      this.idAgenda = "";
+      this.recibe = "";
+      this.telefonoRecibe = "";
+      this.direccionEntrega = "";
+      this.mensaje = "";
     },
     cerrarModal: function cerrarModal() {
       this.modal = false;
@@ -21004,6 +21022,7 @@ __webpack_require__.r(__webpack_exports__);
       this.modal = true;
       this.tpAccion = -1;
       this.titulo = "Ver Pedido Nro. ";
+      this.openTab = 1;
     },
     getValorProducto: function getValorProducto() {
       var me = this;
@@ -23815,29 +23834,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "p-6 sm:px-20 bg-ping-100 border-b border-gray-200"
+  "class": "bg-pink-50"
+};
+var _hoisted_2 = {
+  "class": "p-6 sm:px-20 bg-pink-50 border-b border-pink-50"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mt-8 text-pink-600 text-2xl"
-}, " Bienvenido a Deliti Reposteria Artesanal ", -1
-/* HOISTED */
-);
-
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "mt-6 text-gray-500"
-}, null, -1
+  "class": "mt-8 text-center font-semibold text-pink-800 text-3xl"
+}, " ¡Te acompañamos en tus eventos! ", -1
 /* HOISTED */
 );
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2\"><div class=\"p-6\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-400\"><path d=\"M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253\"></path></svg><div class=\"ml-4 text-lg text-gray-600 leading-7 font-semibold\"><a>Documentation</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-sm text-gray-500\"> Aquí. </div></div></div><div class=\"p-6 border-t border-gray-200 md:border-t-0 md:border-l\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-400\"><path d=\"M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z\"></path><path d=\"M15 13a3 3 0 11-6 0 3 3 0 016 0z\"></path></svg><div class=\"ml-4 text-lg text-gray-600 leading-7 font-semibold\"><a>Laracasts</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-sm text-gray-500\"> Aquí. </div></div></div><div class=\"p-6 border-t border-gray-200\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-400\"><path d=\"M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\"></path></svg><div class=\"ml-4 text-lg text-gray-600 leading-7 font-semibold\"><a>Tailwind</a></div></div><div class=\"ml-12\"><div class=\"mt-2 text-sm text-gray-500\"> Aquí. </div></div></div><div class=\"p-6 border-t border-gray-200 md:border-l\"><div class=\"flex items-center\"><svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" viewBox=\"0 0 24 24\" class=\"w-8 h-8 text-gray-400\"><path d=\"M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z\"></path></svg><div class=\"ml-4 text-lg text-gray-600 leading-7 font-semibold\">Authentication</div></div><div class=\"ml-12\"><div class=\"mt-2 text-sm text-gray-500\"> Aquí. </div></div></div></div>", 1);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container my-12 mx-auto px-4 md:px-12 bg-pink-50\"><div class=\"flex flex-wrap -mx-1 lg:-mx-4\"><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\"><article class=\"overflow-hidden rounded-lg shadow-lg bg-pink-502\"><a><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortChocolate.jpg\"></a><header class=\"flex items-center  justify-between leading-tight p-2 md:p-4\"><div><h1 class=\"text-lg text-center font-semibold text-Pink-800\"><a class=\"no-underline hover:underline text-pink-700\"> Torta de chocolate </a></h1><h3><a> Deliciosa y esponjosa torta de chocolate rellena, cubierta y decorada con mucho chocolate. Lleva en su decoración nuestras paletas de torta y mucho sabor. </a></h3></div></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\"><article class=\"overflow-hidden rounded-lg shadow-lg\"><a><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/PaletasDeTorta.jpg\"></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\"><div><h1 class=\"text-lg text-center font-semibold text-Pink-800\"><a class=\"no-underline hover:underline text-pink-700\"> Paletas de Torta </a></h1><h3><a> Deliciosas paletas de torta cubiertas de chocolate con deliciosos rellenos como mora, arequipe, nutela, chocolate, etc. Perfectas para esos momentos especiales. </a></h3></div></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\"><article class=\"overflow-hidden rounded-lg shadow-lg\"><a><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/CoronaVirus.jpg\"></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\"><div><h1 class=\"text-lg text-center font-semibold text-Pink-800\"><a class=\"no-underline hover:underline text-pink-700\"> Tortas personalizadas </a></h1><h3><a> Personalizamos tus tortas, hacemos tu sueño realidad con impresiones comestibles, con figuras y cubiertas en fondant para compartir con los tuyos. </a></h3></div></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\"><article class=\"overflow-hidden rounded-lg shadow-lg\"><a><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/CupcakesVino.jpeg\"></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\"><div><h1 class=\"text-lg text-center font-semibold text-Pink-800\"><a class=\"no-underline hover:underline text-pink-700\"> Cupcakes Personalizados </a></h1><h3><a> Mini ponquesitos decorados y persona- lizados, con dulces y ricos rellenos como frutos rojos, arequipe, mora, y chocolate para endulzar esa persona especial. </a></h3></div></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\"><article class=\"overflow-hidden rounded-lg shadow-lg\"><a><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/Popcakes.jpeg\"></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\"><div><h1 class=\"text-lg text-center font-semibold text-Pink-800\"><a class=\"no-underline hover:underline text-pink-700\"> Popcakes </a></h1><h3><a> Ricas bolitas de torta decoradas con chocolate para tus eventos como cumpleaños y Baby Showers, especiales para decorar tus mesas dulces. </a></h3></div></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\"><article class=\"overflow-hidden rounded-lg shadow-lg\"><a><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/NavidadCorporativo.jpeg\"></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\"><div><h1 class=\"text-lg text-center font-semibold text-Pink-800\"><a class=\"no-underline hover:underline text-pink-700\"> Corporativo </a></h1><h3><a> Tenemos esos detalles que buscas para obsequiar a tus empleados y así promover su productividad y mejorar el ambiente laboral. </a></h3></div></header></article></div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_application_logo = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-application-logo");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_application_logo, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_jet_application_logo, {
     "class": "block h-12 w-auto"
-  })]), _hoisted_2, _hoisted_3]), _hoisted_4]);
+  })]), _hoisted_3]), _hoisted_4]);
 }
 
 /***/ }),
@@ -23859,7 +23875,7 @@ var _hoisted_1 = {
   "class": "min-h-screen bg-red-50"
 };
 var _hoisted_2 = {
-  "class": "bg-white border-b border-gray-100"
+  "class": "bg-white border-b border-pink-50"
 };
 var _hoisted_3 = {
   "class": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
@@ -23901,7 +23917,7 @@ var _hoisted_17 = {
 };
 var _hoisted_18 = {
   key: 0,
-  "class": "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition"
+  "class": "flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-pink-500 transition"
 };
 var _hoisted_19 = ["src", "alt"];
 var _hoisted_20 = {
@@ -23910,7 +23926,7 @@ var _hoisted_20 = {
 };
 var _hoisted_21 = {
   type: "button",
-  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition"
+  "class": "inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-600 bg-white hover:text-pink-600 focus:outline-none transition"
 };
 
 var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
@@ -23927,7 +23943,7 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "block px-4 py-2 text-xs text-gray-400"
+  "class": "block px-4 py-2 text-xs text-gray-600"
 }, " Administrar Cuenta ", -1
 /* HOISTED */
 );
@@ -23937,7 +23953,7 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" API Tokens ");
 
 var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "border-t border-gray-100"
+  "class": "border-t border-pink-100"
 }, null, -1
 /* HOISTED */
 );
@@ -26775,7 +26791,7 @@ var _hoisted_17 = {
 };
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "bg-yellow-500 text-yellow-50 py-1 px-3 rounded-full text-xs"
+  "class": "bg-red-400 text-red-50 py-1 px-3 rounded-full text-xs"
 }, "Pendiente", -1
 /* HOISTED */
 );
@@ -26787,7 +26803,7 @@ var _hoisted_20 = {
 };
 
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "bg-blue-500 text-blue-50 py-1 px-7 rounded-full text-xs"
+  "class": "bg-pink-600 text-pink-50 py-1 px-7 rounded-full text-xs"
 }, "Listo", -1
 /* HOISTED */
 );
@@ -27041,11 +27057,11 @@ var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_74 = {
-  "class": "min-w-max w-full table-auto border-separate border border-pink-800"
+  "class": "min-w-max w-full table-auto border-separate border border-pink-600"
 };
 
 var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
-  "class": "bg-pink-200 text-pink-900 uppercase text-sm leading-normal"
+  "class": "bg-pink-100 text-pink-700 uppercase text-xs leading-normal"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "py-3 px-6 text-center border border-pink-700"
 }, "Producto"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
@@ -27062,7 +27078,7 @@ var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_76 = {
   key: 0,
-  "class": "text-gray-600 text-sm font-light"
+  "class": "text-gray-600 text-xs font-light"
 };
 var _hoisted_77 = {
   "class": "py-3 px-6 text-left border border-pink-700"
@@ -27109,14 +27125,14 @@ var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_86 = {
-  "class": "bg-pink-200 text-pink-900 border-b border-blue-100 hover:bg-pink-200"
+  "class": "bg-pink-100 text-pink-700 border-b border-blue-100 hover:bg-pink-200"
 };
 
 var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   colspan: "3",
   "class": "py-3 px-6 text-right border border-pink-700 font-bold",
   align: "right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "TOTAL")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "TOTAL A PAGAR")], -1
 /* HOISTED */
 );
 
@@ -27257,7 +27273,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         type: "button",
         "class": "border border-pink-600 bg-pink-700 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-pink-500 focus:outline-none focus:shadow-outline"
       }, " Nuevo Pedido ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal"), _ctx.modal == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_34, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_36, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal", {
           'text-pink-600 bg-white': _ctx.openTab !== 1,
           'text-white bg-pink-600': _ctx.openTab === 1
         }]),
@@ -27267,7 +27283,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, _hoisted_40, 2
       /* CLASS */
       )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal", {
           'text-pink-600 bg-white': _ctx.openTab !== 2,
           'text-white bg-pink-600': _ctx.openTab === 2
         }]),
@@ -27277,7 +27293,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, _hoisted_44, 2
       /* CLASS */
       )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["text-md font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal", {
           'text-pink-600 bg-white': _ctx.openTab !== 3,
           'text-white bg-pink-600': _ctx.openTab === 3
         }]),
@@ -27321,7 +27337,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onKeyup: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function () {
           return _ctx.datosCliente && _ctx.datosCliente.apply(_ctx, arguments);
         }, ["enter"])),
-        placeholder: "Ingrese No. documento",
+        placeholder: "Ingrese su número de documento",
         id: "numdoc",
         type: "text",
         "class": "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
@@ -27361,7 +27377,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
           return _ctx.telefono = $event;
         }),
-        placeholder: "Ingrese No. tel",
+        placeholder: "Ingrese su numero de teléfono",
         id: "phone",
         type: "text",
         "class": "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
@@ -27433,7 +27449,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _cache[16] || (_cache[16] = function () {
           return _ctx.agregarDetalleProd && _ctx.agregarDetalleProd.apply(_ctx, arguments);
         }),
-        "class": "flex-no-shrink bg-pink-700 px-10 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-1 border-pink-800 text-white rounded-full"
+        "class": "flex-no-shrink bg-pink-600 px-10 ml-4 py-2 text-sm shadow-sm hover:shadow-lg font-medium tracking-wider border-1 border-pink-600 text-white rounded-full"
       }, " + ")])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_73, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_74, [_hoisted_75, _ctx.arrayDetallePedido.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", _hoisted_76, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.arrayDetallePedido, function (detalle, index) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
           key: detalle.id,
@@ -27534,13 +27550,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* CLASS */
       )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_105, [_ctx.openTab > 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
         key: 0,
-        "class": "py-2 px-4 border rounded-md border-blue-600 text-blue-600 cursor-pointer uppercase text-sm font-bold hover:bg-blue-500 hover:text-white hover:shadow",
+        "class": "py-2 px-4 border rounded-md border-pink-600 text-pink-600 cursor-pointer uppercase text-sm font-bold hover:bg-pink-600 hover:text-white hover:shadow",
         onClick: _cache[23] || (_cache[23] = function ($event) {
           return _ctx.openTab--;
         })
       }, "Atrás")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.openTab < 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
         key: 1,
-        "class": "py-2 px-4 border rounded-md border-blue-600 text-blue-600 cursor-pointer uppercase text-sm font-bold hover:bg-blue-500 hover:text-white hover:shadow",
+        "class": "py-2 px-4 border rounded-md border-pink-600 text-pink-600 cursor-pointer uppercase text-sm font-bold hover:bg-pink-600 hover:text-white hover:shadow",
         onClick: _cache[24] || (_cache[24] = function ($event) {
           return _ctx.openTab++;
         })
@@ -27548,7 +27564,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _cache[25] || (_cache[25] = function () {
           return _ctx.cerrarModal && _ctx.cerrarModal.apply(_ctx, arguments);
         }),
-        "class": "px-4 py-2 text-white font-semibold bg-purple-600 rounded"
+        "class": "px-4 py-2 text-white font-semibold bg-pink-600 rounded"
       }, " Cancelar "), _ctx.tpAccion == 0 && _ctx.openTab == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
         key: 0,
         onClick: _cache[26] || (_cache[26] = function () {
@@ -31356,10 +31372,10 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Registro ");
 
 var _hoisted_6 = {
-  "class": "max-w-6xl mx-auto sm:px-6 lg:px-8"
+  "class": "max-w-6xl mx-auto sm:px-6 lg:px-8 bg-pink-50"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex justify-center pt-8 sm:justify-start sm:pt-0\" data-v-317d1a6e><svg viewBox=\"0 0 651 192\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"h-16 w-auto text-gray-700 sm:h-20\" data-v-317d1a6e><g clip-path=\"url(#clip0)\" fill=\"#EF3B2D\" data-v-317d1a6e><path d=\"M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z\" data-v-317d1a6e></path></g></svg></div><div class=\"container my-12 mx-auto px-4 md:px-12\" data-v-317d1a6e><div class=\"flex flex-wrap -mx-1 lg:-mx-4\" data-v-317d1a6e><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/CupcakesFondant.png\" data-v-317d1a6e></a><header class=\"flex items-center  justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-color-pink\" href=\"#\" data-v-317d1a6e> Cupcakes Personalizados </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/PaletasDeTorta.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg\" data-v-317d1a6e><a class=\"no-underline hover:underline\" href=\"#\" data-v-317d1a6e> Paletas de Torta </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/FresasConChocolate.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg\" data-v-317d1a6e><a class=\"no-underline hover:underline text-Pink-800\" href=\"#\" data-v-317d1a6e> Fresas con Chocolate </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortaVinoDecorada.png\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg\" data-v-317d1a6e><a class=\"no-underline hover:underline text-Pink-800\" href=\"#\" data-v-317d1a6e> Torta de vino decorada </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortaDecoradaFondant.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg\" data-v-317d1a6e><a class=\"no-underline hover:underline text-Pink-800\" href=\"#\" data-v-317d1a6e> Torta decorada en Fondant </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/Corporativo.png\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg\" data-v-317d1a6e><a class=\"no-underline hover:underline text-Pink-800\" href=\"#\" data-v-317d1a6e> Detalles Corporativos </a></h1></header></article></div></div></div>", 2);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex justify-center pt-8 sm:justify-start sm:pt-0\" data-v-317d1a6e><svg viewBox=\"0 0 651 192\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"h-16 w-auto text-gray-700 sm:h-20\" data-v-317d1a6e><g clip-path=\"url(#clip0)\" fill=\"#EF3B2D\" data-v-317d1a6e><path d=\"M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z\" data-v-317d1a6e></path></g></svg></div><div class=\"container my-12 mx-auto px-4 md:px-12\" data-v-317d1a6e><div class=\"flex flex-wrap -mx-1 lg:-mx-4\" data-v-317d1a6e><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg bg-blue\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/CupcakesFondant.jpeg\" data-v-317d1a6e></a><header class=\"flex items-center  justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Cupcakes Personalizados </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/PaletasDeTorta.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Paletas de Torta </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/FresasConChocolate.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Fresas con Chocolate </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortaVinoDecorada.png\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Torta de vino decorada </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortaDecoradaFondant.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Torta decorada en Fondant </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/Corporativo.png\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Detalles Corporativos </a></h1></header></article></div></div></div>", 2);
 
 var _hoisted_9 = {
   "class": "flex justify-center mt-4 sm:items-center sm:justify-between"

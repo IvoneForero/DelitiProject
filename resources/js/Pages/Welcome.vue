@@ -18,7 +18,7 @@
             </template>
         </div>
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 bg-pink-50">
             <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                 <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
                     <g clip-path="url(#clip0)" fill="#EF3B2D">
@@ -30,13 +30,13 @@
             <div class="container my-12 mx-auto px-4 md:px-12">
                 <div class="flex flex-wrap -mx-1 lg:-mx-4">
                     <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-                        <article class="overflow-hidden rounded-lg shadow-lg">
+                        <article class="overflow-hidden rounded-lg shadow-lg bg-blue">
                             <a href="#">
-                                <img alt="Placeholder" class="block h-auto w-full" src="/images/CupcakesFondant.png">
+                                <img alt="Placeholder" class="block h-auto w-full" src="/images/CupcakesFondant.jpeg">
                             </a>
                             <header class="flex items-center  justify-between leading-tight p-2 md:p-4">
-                                <h1 class="text-lg text-Pink-800">
-                                    <a class="no-underline hover:underline text-color-pink" href="#">
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700" href="#">
                                         Cupcakes Personalizados 
                                     </a>
                                 </h1>
@@ -50,8 +50,8 @@
                                 <img alt="Placeholder" class="block h-auto w-full" src="/images/PaletasDeTorta.jpg">
                             </a>
                             <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                                <h1 class="text-lg">
-                                    <a class="no-underline hover:underline" href="#">
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700" href="#">
                                         Paletas de Torta
                                     </a>
                                 </h1>
@@ -65,8 +65,8 @@
                                 <img alt="Placeholder" class="block h-auto w-full" src="/images/FresasConChocolate.jpg">
                             </a>
                             <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                                <h1 class="text-lg">
-                                    <a class="no-underline hover:underline text-Pink-800" href="#">
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700" href="#">
                                         Fresas con Chocolate
                                     </a>
                                 </h1>
@@ -80,8 +80,8 @@
                                 <img alt="Placeholder" class="block h-auto w-full" src="/images/TortaVinoDecorada.png">
                             </a>
                             <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                                <h1 class="text-lg">
-                                    <a class="no-underline hover:underline text-Pink-800" href="#">
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700" href="#">
                                         Torta de vino decorada
                                     </a>
                                 </h1>
@@ -95,8 +95,8 @@
                                 <img alt="Placeholder" class="block h-auto w-full" src="/images/TortaDecoradaFondant.jpg">
                             </a>
                             <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                                <h1 class="text-lg">
-                                    <a class="no-underline hover:underline text-Pink-800" href="#">
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700" href="#">
                                         Torta decorada en Fondant
                                     </a>
                                 </h1>
@@ -110,8 +110,8 @@
                                 <img alt="Placeholder" class="block h-auto w-full" src="/images/Corporativo.png">
                             </a>
                             <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                                <h1 class="text-lg">
-                                    <a class="no-underline hover:underline text-Pink-800" href="#">
+                                <h1 class="text-lg text-center font-semibold text-Pink-800">
+                                    <a class="no-underline hover:underline text-pink-700" href="#">
                                         Detalles Corporativos
                                     </a>
                                 </h1>
