@@ -21031,6 +21031,7 @@ __webpack_require__.r(__webpack_exports__);
         var respuesta = response.data;
         me.arrayDetalleProducto = respuesta.consulta;
         me.valor = me.arrayDetalleProducto[0]['price'];
+        me.cantidad = 1;
       })["catch"](function (error) {});
     },
     agregarDetalleProd: function agregarDetalleProd() {
@@ -21056,6 +21057,10 @@ __webpack_require__.r(__webpack_exports__);
         var respuesta = response.data;
         me.arrayDetallePedido = respuesta.consulta;
       })["catch"](function (error) {});
+    },
+    eliminarDetalle: function eliminarDetalle(index) {
+      alert("Eliminar Detalle");
+      this.arrayDetallePedido.splice(index, 1);
     }
   },
   computed: {
@@ -21250,8 +21255,7 @@ function setup() {
         me.cerrarModal();
         me.mensaje('Registro creado!!', 'El registro se creo correctamente.', 'success'); //alert("Se registro correctamente");
       })["catch"](function (error) {
-        //me.mensaje('Error al crear Registro!!',error,'error');
-        alert(error);
+        me.mensaje('Error al crear Registro!!', error.message, 'error');
       });
     },
     "delete": function _delete() {
@@ -26688,7 +26692,7 @@ var _hoisted_2 = {
   "class": "max-w-7xl mx-auto sm:px-6 lg:px-8"
 };
 var _hoisted_3 = {
-  "class": "bg-white overflow-hidden shadow-xl sm:rounded-lg"
+  "class": " overflow-hidden shadow-xl sm:rounded-lg"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_welcome = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("welcome");
@@ -27104,13 +27108,12 @@ var _hoisted_83 = {
 var _hoisted_84 = {
   "class": "flex items-center"
 };
-
-var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_85 = {
   "class": "py-3 px-6 text-left border border-pink-700"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "w-4 mr-2 transform hover:text-red-500 hover:scale-110",
-  title: "Eliminar"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+};
+var _hoisted_86 = ["onClick"];
+
+var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   fill: "none",
   viewBox: "0 0 24 24",
@@ -27120,15 +27123,16 @@ var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "stroke-linejoin": "round",
   "stroke-width": "2",
   d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-})])])], -1
+})], -1
 /* HOISTED */
 );
 
-var _hoisted_86 = {
+var _hoisted_88 = [_hoisted_87];
+var _hoisted_89 = {
   "class": "bg-pink-100 text-pink-700 border-b border-blue-100 hover:bg-pink-200"
 };
 
-var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   colspan: "3",
   "class": "py-3 px-6 text-right border border-pink-700 font-bold",
   align: "right"
@@ -27136,97 +27140,97 @@ var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_88 = {
+var _hoisted_91 = {
   "class": "py-3 px-6 text-left border border-pink-700 font-bold",
   align: "right"
 };
 
-var _hoisted_89 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   "class": "py-3 px-6 text-left border border-pink-700"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_90 = {
+var _hoisted_93 = {
   key: 1,
   "class": "text-gray-600 text-sm font-light"
 };
 
-var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
+var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", {
   colspan: "5",
   "class": "border-b border-blue-100 hover:bg-gray-100"
 }, "No existen productos agregados al pedido", -1
 /* HOISTED */
 );
 
-var _hoisted_92 = [_hoisted_91];
+var _hoisted_95 = [_hoisted_94];
 
-var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_96 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
 /* HOISTED */
 );
 
-var _hoisted_94 = {
+var _hoisted_97 = {
   "class": "text-center font-bold text-xl text-pink-800 leading-tight uppercase"
 };
 
-var _hoisted_95 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Datos de Entrega");
+var _hoisted_98 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Datos de Entrega");
 
-var _hoisted_96 = {
+var _hoisted_99 = {
   "class": "grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2"
 };
 
-var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "text-pink-800 dark:text-gray-200",
   "for": "Date"
 }, "Fecha Entrega", -1
 /* HOISTED */
 );
 
-var _hoisted_98 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "text-pink-800 dark:text-gray-200",
   "for": "agenda"
 }, "Agenda", -1
 /* HOISTED */
 );
 
-var _hoisted_99 = ["value"];
+var _hoisted_102 = ["value"];
 
-var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "text-pink-800 dark:text-gray-200",
   "for": "recibe"
 }, "Quien Recibe", -1
 /* HOISTED */
 );
 
-var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_104 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "text-pink-800 dark:text-gray-200",
   "for": "recibe"
 }, "Teléfono quien recibe", -1
 /* HOISTED */
 );
 
-var _hoisted_102 = {
+var _hoisted_105 = {
   "class": "grid grid-cols-1 gap-6 mt-4 sm:grid-cols-1"
 };
 
-var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_106 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "text-pink-800 dark:text-gray-200",
   "for": "direccionEntrega"
 }, "Dirección Entrega", -1
 /* HOISTED */
 );
 
-var _hoisted_104 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_107 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "text-pink-800 dark:text-gray-200",
   "for": "mensaje"
 }, "Mensaje", -1
 /* HOISTED */
 );
 
-var _hoisted_105 = {
+var _hoisted_108 = {
   "class": "flex gap-4 justify-center border-t p-4"
 };
-var _hoisted_106 = {
+var _hoisted_109 = {
   "class": "flex flex-row items-center justify-between p-5 text-gray-600 border-t border-gray-200 rounded-bl-lg rounded-br-lg"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -27432,6 +27436,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         id: "cantidad",
         type: "number",
+        min: "1",
         "class": "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
       }, null, 512
       /* NEED_PATCH */
@@ -27441,6 +27446,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
         id: "ValorUnidad",
         type: "number",
+        disabled: "",
         "class": "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
       }, null, 512
       /* NEED_PATCH */
@@ -27462,26 +27468,34 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_83, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_84, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(detalle.total), 1
         /* TEXT */
-        )])]), _hoisted_85]);
+        )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_85, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+          onClick: function onClick($event) {
+            return _ctx.eliminarDetalle(index);
+          },
+          "class": "w-4 mr-2 transform hover:text-red-500 hover:scale-110",
+          title: "Eliminar"
+        }, _hoisted_88, 8
+        /* PROPS */
+        , _hoisted_86)])]);
       }), 128
       /* KEYED_FRAGMENT */
-      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_86, [_hoisted_87, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_88, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.sumar), 1
+      )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", _hoisted_89, [_hoisted_90, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_91, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.sumar), 1
       /* TEXT */
-      )]), _hoisted_89])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", _hoisted_90, _hoisted_92))]), _hoisted_93])], 2
+      )]), _hoisted_92])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tbody", _hoisted_93, _hoisted_95))]), _hoisted_96])], 2
       /* CLASS */
       ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
           'hidden': _ctx.openTab !== 3,
           'block': _ctx.openTab === 3
         })
-      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_94, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_H1, null, {
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_97, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_H1, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_95];
+          return [_hoisted_98];
         }),
         _: 1
         /* STABLE */
 
-      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_96, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_97, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_99, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_100, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
           return _ctx.fecEntrega = $event;
         }),
@@ -27490,7 +27504,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.fecEntrega]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_98, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.fecEntrega]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_101, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
         "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
           return _ctx.idAgenda = $event;
         }),
@@ -27501,12 +27515,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           value: item.id
         }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.schedule), 9
         /* TEXT, PROPS */
-        , _hoisted_99);
+        , _hoisted_102);
       }), 128
       /* KEYED_FRAGMENT */
       ))], 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.idAgenda]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_100, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, _ctx.idAgenda]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_103, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
           return _ctx.recibe = $event;
         }),
@@ -27516,7 +27530,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.recibe]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_101, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.recibe]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_104, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
           return _ctx.telefonoRecibe = $event;
         }),
@@ -27526,7 +27540,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.telefonoRecibe]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_102, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_103, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.telefonoRecibe]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_105, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_106, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
         "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
           return _ctx.direccionEntrega = $event;
         }),
@@ -27536,7 +27550,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
       }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.direccionEntrega]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_104, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.direccionEntrega]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [_hoisted_107, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
         "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
           return _ctx.mensaje = $event;
         }),
@@ -27548,7 +27562,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.mensaje]])])])], 2
       /* CLASS */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_105, [_ctx.openTab > 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_108, [_ctx.openTab > 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
         key: 0,
         "class": "py-2 px-4 border rounded-md border-pink-600 text-pink-600 cursor-pointer uppercase text-sm font-bold hover:bg-pink-600 hover:text-white hover:shadow",
         onClick: _cache[23] || (_cache[23] = function ($event) {
@@ -27560,7 +27574,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         onClick: _cache[24] || (_cache[24] = function ($event) {
           return _ctx.openTab++;
         })
-      }, "Siguiente")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      }, "Siguiente")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_109, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: _cache[25] || (_cache[25] = function () {
           return _ctx.cerrarModal && _ctx.cerrarModal.apply(_ctx, arguments);
         }),
@@ -31375,7 +31389,7 @@ var _hoisted_6 = {
   "class": "max-w-6xl mx-auto sm:px-6 lg:px-8 bg-pink-50"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex justify-center pt-8 sm:justify-start sm:pt-0\" data-v-317d1a6e><svg viewBox=\"0 0 651 192\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"h-16 w-auto text-gray-700 sm:h-20\" data-v-317d1a6e><g clip-path=\"url(#clip0)\" fill=\"#EF3B2D\" data-v-317d1a6e><path d=\"M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z\" data-v-317d1a6e></path></g></svg></div><div class=\"container my-12 mx-auto px-4 md:px-12\" data-v-317d1a6e><div class=\"flex flex-wrap -mx-1 lg:-mx-4\" data-v-317d1a6e><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg bg-blue\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/CupcakesFondant.jpeg\" data-v-317d1a6e></a><header class=\"flex items-center  justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Cupcakes Personalizados </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/PaletasDeTorta.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Paletas de Torta </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/FresasConChocolate.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Fresas con Chocolate </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortaVinoDecorada.png\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Torta de vino decorada </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortaDecoradaFondant.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Torta decorada en Fondant </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/Corporativo.png\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Detalles Corporativos </a></h1></header></article></div></div></div>", 2);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"flex justify-center pt-8 sm:justify-start \" data-v-317d1a6e><img class=\"rounded-full h-32 w-45 top-40%\" src=\"/images/Logo_Deliti_R.png\" alt=\"user avatar\" align=\"justify-center\" data-v-317d1a6e></div><div class=\"container my-12 mx-auto px-4 md:px-12\" data-v-317d1a6e><div class=\"flex flex-wrap -mx-1 lg:-mx-4\" data-v-317d1a6e><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg bg-blue\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/CupcakesFondant.jpeg\" data-v-317d1a6e></a><header class=\"flex items-center  justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Cupcakes Personalizados </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/PaletasDeTorta.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Paletas de Torta </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/FresasConChocolate.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Fresas con Chocolate </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortaVinoDecorada.png\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Torta de vino decorada </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/TortaDecoradaFondant.jpg\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Torta decorada en Fondant </a></h1></header></article></div><div class=\"my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3\" data-v-317d1a6e><article class=\"overflow-hidden rounded-lg shadow-lg\" data-v-317d1a6e><a href=\"#\" data-v-317d1a6e><img alt=\"Placeholder\" class=\"block h-auto w-full\" src=\"/images/Corporativo.png\" data-v-317d1a6e></a><header class=\"flex items-center justify-between leading-tight p-2 md:p-4\" data-v-317d1a6e><h1 class=\"text-lg text-center font-semibold text-Pink-800\" data-v-317d1a6e><a class=\"no-underline hover:underline text-pink-700\" href=\"#\" data-v-317d1a6e> Detalles Corporativos </a></h1></header></article></div></div></div>", 2);
 
 var _hoisted_9 = {
   "class": "flex justify-center mt-4 sm:items-center sm:justify-between"

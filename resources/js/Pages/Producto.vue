@@ -325,8 +325,7 @@
                     })
                     .catch(function(error) 
                     {
-                        //me.mensaje('Error al crear Registro!!',error,'error');
-                        alert(error);
+                        me.mensaje('Error al crear Registro!!',error.message,'error');
                     });
                 },            
                 delete()

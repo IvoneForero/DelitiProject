@@ -155,11 +155,11 @@
                                             <div v-if="tpAccion!=-1" class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-3">
                                                 <div>
                                                     <label class="text-pink-800 dark:text-gray-200" for="Cantidad">Cantidad</label>
-                                                    <input v-model="cantidad" id="cantidad" type="number" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                                    <input v-model="cantidad" id="cantidad" type="number" min="1" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                                 </div>
                                                 <div>
                                                     <label class="text-pink-800 dark:text-gray-200" for="ValorUnidad">Valor</label>
-                                                    <input v-model="valor" id="ValorUnidad" type="number" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                                                    <input v-model="valor" id="ValorUnidad" type="number" disabled class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                                                 </div>
                                                 <div>
                                                     <br/>
@@ -203,7 +203,7 @@
                                                                 </div>
                                                             </td>                                                
                                                             <td class="py-3 px-6 text-left border border-pink-700">
-                                                                <div class="w-4 mr-2 transform hover:text-red-500 hover:scale-110" title="Eliminar">
+                                                                <div @click="eliminarDetalle(index)" class="w-4 mr-2 transform hover:text-red-500 hover:scale-110" title="Eliminar">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                                     </svg>
@@ -500,6 +500,7 @@
                     var respuesta=response.data;
                     me.arrayDetalleProducto=respuesta.consulta;
                     me.valor=me.arrayDetalleProducto[0]['price'];
+                    me.cantidad=1;
                 })
                 .catch(function(error){
                 })
@@ -530,9 +531,13 @@
                     me.arrayDetallePedido=respuesta.consulta;
                 })
                 .catch(function(error){
-                })
-                
+                })                
             },
+            eliminarDetalle(index)
+            {
+                alert("Eliminar Detalle");
+                 this.arrayDetallePedido.splice(index,1);
+            }
         },
         computed: {
             sumar:function()
