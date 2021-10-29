@@ -37,7 +37,7 @@
                                         </div>
                                     </td>                                    
                                     <td v-if="object.state==0" class="py-3 px-6 text-left">
-                                        <span class="bg-red-400 text-red-50 py-1 px-3 rounded-full text-xs">Pendiente</span>
+                                        <span class="bg-blue-400 text-red-50 py-1 px-3 rounded-full text-xs">Pendiente</span>
                                     </td>
                                     <td v-if="object.state==1" class="py-3 px-6 text-left">
                                         <span class="bg-pink-600 text-pink-50 py-1 px-7 rounded-full text-xs">Listo</span>
@@ -281,7 +281,7 @@
                                         <button @click="cerrarModal" class="px-4 py-2 text-white font-semibold bg-pink-600 rounded">
                                             Cancelar
                                         </button>
-                                        <button v-if="tpAccion==0 && openTab==3" @click="registrar" class="px-4 py-2 text-white font-semibold bg-green-400 rounded">
+                                        <button v-if="tpAccion==0 && openTab==3" @click="registrarPedido" class="px-4 py-2 text-white font-semibold bg-green-400 rounded">
                                             Guardar
                                         </button>
                                         <button v-if="tpAccion==1" @click="update" class="px-4 py-2 text-white font-semibold bg-green-400 rounded">
@@ -354,6 +354,35 @@
             toggleTabs: function(tabNumber)
             {
                 this.openTab = tabNumber
+            },
+            registrarPedido()
+            {
+                let me =this;
+                var url ="/api/order/registrar";
+                axios.post(url, 
+                {
+                    idClient:this.idCliente,
+                    deliveryDate:this.fecEntrega,
+                    delivAdrress:this.direccionEntrega,
+                    idCalendar:this.idAgenda,
+                    receiveName:this.recibe,
+                    receivePhone:this.telefonoRecibe,
+                    vlrTotal:this.sumar,
+                    state:this.edo,
+                    message:this.mensaje,
+                    data:this.arrayDetallePedido
+                })
+                .then(function(response)
+                {
+                    me.listarDatos();
+                    me.cerrarModal();
+                    me.xmensaje('Registro creado!!','El registro se creo correctamente.','success');
+                })
+                .catch(function(error) 
+                {
+                    me.xmensaje('Error al crear Registro!!',error.message,'error');
+                });
+
             },
             listarDatos()
             {
@@ -537,7 +566,15 @@
             {
                 alert("Eliminar Detalle");
                  this.arrayDetallePedido.splice(index,1);
-            }
+            },
+            xmensaje(head, body, button)
+            {
+                Swal.fire(
+                    head,
+                    body,
+                    button
+                )            
+            } 
         },
         computed: {
             sumar:function()

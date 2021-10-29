@@ -20919,6 +20919,28 @@ __webpack_require__.r(__webpack_exports__);
     toggleTabs: function toggleTabs(tabNumber) {
       this.openTab = tabNumber;
     },
+    registrarPedido: function registrarPedido() {
+      var me = this;
+      var url = "/api/order/registrar";
+      axios.post(url, {
+        idClient: this.idCliente,
+        deliveryDate: this.fecEntrega,
+        delivAdrress: this.direccionEntrega,
+        idCalendar: this.idAgenda,
+        receiveName: this.recibe,
+        receivePhone: this.telefonoRecibe,
+        vlrTotal: this.sumar,
+        state: this.edo,
+        message: this.mensaje,
+        data: this.arrayDetallePedido
+      }).then(function (response) {
+        me.listarDatos();
+        me.cerrarModal();
+        me.xmensaje('Registro creado!!', 'El registro se creo correctamente.', 'success');
+      })["catch"](function (error) {
+        me.xmensaje('Error al crear Registro!!', error.message, 'error');
+      });
+    },
     listarDatos: function listarDatos() {
       var me = this;
       var url = "/api/order/index2";
@@ -21061,6 +21083,9 @@ __webpack_require__.r(__webpack_exports__);
     eliminarDetalle: function eliminarDetalle(index) {
       alert("Eliminar Detalle");
       this.arrayDetallePedido.splice(index, 1);
+    },
+    xmensaje: function xmensaje(head, body, button) {
+      Swal.fire(head, body, button);
     }
   },
   computed: {
@@ -26795,7 +26820,7 @@ var _hoisted_17 = {
 };
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "bg-red-400 text-red-50 py-1 px-3 rounded-full text-xs"
+  "class": "bg-blue-400 text-red-50 py-1 px-3 rounded-full text-xs"
 }, "Pendiente", -1
 /* HOISTED */
 );
@@ -27582,7 +27607,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, " Cancelar "), _ctx.tpAccion == 0 && _ctx.openTab == 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
         key: 0,
         onClick: _cache[26] || (_cache[26] = function () {
-          return _ctx.registrar && _ctx.registrar.apply(_ctx, arguments);
+          return _ctx.registrarPedido && _ctx.registrarPedido.apply(_ctx, arguments);
         }),
         "class": "px-4 py-2 text-white font-semibold bg-green-400 rounded"
       }, " Guardar ")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.tpAccion == 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {

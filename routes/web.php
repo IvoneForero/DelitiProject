@@ -83,6 +83,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/api/user/getdata',[AppUse
 
 //Rutas Pedidos
 Route::middleware(['auth:sanctum', 'verified'])->get('/order',[OrdersController::class, 'index'])->name('order');
+Route::middleware(['auth:sanctum', 'verified'])->post('/api/order/registrar',[OrdersController::class, 'store']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/api/order/index2',[OrdersController::class, 'index2']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/api/detalle/index2',[OrdDetailsController::class, 'index2']);
